@@ -1,0 +1,24 @@
+.page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.month-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 75%;
+  border: 2px solid black;
+}
+
+.month-head {
+  width: 100%;
+  text-align: center;
+  border: 2px solid black;
+}
+
+.month-body {
+  width: 100%;
+  border: 2px solid black;
+}
