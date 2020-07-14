@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 .page-container {
   display: flex;
   flex-direction: column;
@@ -19,6 +23,15 @@
 }
 
 .month-body {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
   width: 100%;
+}
+
+.month-body div:first-child {
+  grid-column: 4;
+}
+
+.month-day {
   border: 2px solid black;
 }
