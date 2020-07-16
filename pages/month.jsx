@@ -20,16 +20,14 @@ export default function month() {
     const monthDays = new Array(moment((months + 1).toString()).daysInMonth());
     for (let i = 0; i < monthDays.length; i++) monthDays[i] = moment().year(years).month(months).date(i + 1).format("dddd, MMMM Do YYYY");
 
-    // USE THIS TO GET BEFORE AND AFTER CALENDAR DAYS
     const beginning = moment().day(monthDays[0]).format('d');
-    console.log(beginning)
-    console.log(moment().day(monthDays[monthDays.length - 1]).format('d'));
-    // console.log(moment().isoWeek())
-    console.log(moment(`${months + 1}-01-${years}`).subtract(beginning, 'days'))
+    const end = (6 - moment().day(monthDays[monthDays.length - 1]).format('d'));
+    const preDays = [...Array(Number(beginning))].map((_, i) => moment(`${months + 1}-01-${years}`).subtract(beginning - i, 'days').format("dddd, MMMM Do YYYY"));
+    const postDays = [...Array(Number(end))].map((_, i) => moment(`${months + 1}-${monthDays.length}-${years}`).add(i + 1, 'days').format("dddd, MMMM Do YYYY"));
 
     setDisplayDays({
       month: moment().month(months).format('MMMM'),
-      days: monthDays,
+      days: [...preDays, ...monthDays, ...postDays],
     });
   }, [targetDate]);
 
