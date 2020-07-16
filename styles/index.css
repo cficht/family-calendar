@@ -29,7 +29,7 @@
 }
 
 .month-body div:first-child {
-  grid-column: 4;
+  grid-column: 6;
 }
 
 .month-day {

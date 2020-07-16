@@ -9,7 +9,7 @@ export default function month() {
   const [displayDays, setDisplayDays] = useState([]);
 
   useEffect(() => {
-    setTargetDate(moment('02-12-2012').format('MM-DD-YYYY'));
+    setTargetDate(moment('05-12-2020').format('MM-DD-YYYY'));
   }, []);
 
   useEffect(() => {
@@ -21,8 +21,11 @@ export default function month() {
     for (let i = 0; i < monthDays.length; i++) monthDays[i] = moment().year(years).month(months).date(i + 1).format("dddd, MMMM Do YYYY");
 
     // USE THIS TO GET BEFORE AND AFTER CALENDAR DAYS
-    console.log(moment().day(monthDays[0]).format('d'));
+    const beginning = moment().day(monthDays[0]).format('d');
+    console.log(beginning)
     console.log(moment().day(monthDays[monthDays.length - 1]).format('d'));
+    // console.log(moment().isoWeek())
+    console.log(moment(`${months + 1}-01-${years}`).subtract(beginning, 'days'))
 
     setDisplayDays({
       month: moment().month(months).format('MMMM'),
@@ -46,7 +49,7 @@ export default function month() {
           <div className="month-head">
             <h3>{displayDays.month ? displayDays.month : ''}</h3>
           </div>
-          <div className="month-body">
+          <div className="month-body" id={5}>
             {dayNodes}
           </div>
         </div>
