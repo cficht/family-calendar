@@ -16,10 +16,7 @@ export default function month() {
     if (!targetDate) return;
     const { years, months, date } = moment(targetDate).toObject()
 
-    // REFACTOR
-    const monthDays = new Array(moment((months + 1).toString()).daysInMonth());
-    for (let i = 0; i < monthDays.length; i++) monthDays[i] = moment().year(years).month(months).date(i + 1).format("dddd, MMMM Do YYYY");
-
+    const monthDays = [...Array(moment((months + 1).toString()).daysInMonth())].map((_, i) => moment().year(years).month(months).date(i + 1).format("dddd, MMMM Do YYYY"));
     const beginning = moment().day(monthDays[0]).format('d');
     const end = (6 - moment().day(monthDays[monthDays.length - 1]).format('d'));
     const preDays = [...Array(Number(beginning))].map((_, i) => moment(`${months + 1}-01-${years}`).subtract(beginning - i, 'days').format("dddd, MMMM Do YYYY"));
