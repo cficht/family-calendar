@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import moment from 'moment';
+import DaySmall from '../components/DaySmall';
 
 moment().format();
 
@@ -16,11 +17,11 @@ export default function month() {
     if (!targetDate) return;
     const { years, months, date } = moment(targetDate).toObject()
 
-    const monthDays = [...Array(moment((months + 1).toString()).daysInMonth())].map((_, i) => moment().year(years).month(months).date(i + 1).format("dddd, MMMM Do YYYY"));
-    const beginning = moment().day(monthDays[0]).format('d');
-    const end = (6 - moment().day(monthDays[monthDays.length - 1]).format('d'));
-    const preDays = [...Array(Number(beginning))].map((_, i) => moment(`${months + 1}-01-${years}`).subtract(beginning - i, 'days').format("dddd, MMMM Do YYYY"));
-    const postDays = [...Array(Number(end))].map((_, i) => moment(`${months + 1}-${monthDays.length}-${years}`).add(i + 1, 'days').format("dddd, MMMM Do YYYY"));
+    const monthDays = [...Array(moment((months + 1).toString()).daysInMonth())].map((_, i) => moment().year(years).month(months).date(i + 1).format());
+    const beginning = moment(monthDays[0]).day();
+    const end = (6 - moment(monthDays[monthDays.length - 1]).day());
+    const preDays = [...Array(Number(beginning))].map((_, i) => moment(`${months + 1}-01-${years}`).subtract(beginning - i, 'days').format());
+    const postDays = [...Array(Number(end))].map((_, i) => moment(`${months + 1}-${monthDays.length}-${years}`).add(i + 1, 'days').format());
 
     setDisplayDays({
       month: moment().month(months).format('MMMM'),
@@ -28,10 +29,9 @@ export default function month() {
     });
   }, [targetDate]);
 
-  const dayNodes = displayDays.days?.map(day => {return (
-  <div className="month-day" key={day}>
-    <h3>{day}</h3>
-  </div>)})
+
+
+const dayNodes = displayDays.days?.map(day => <DaySmall className="month-day" key={day} day={day}/>)
 
   return (
     <div>
