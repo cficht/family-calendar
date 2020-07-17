@@ -44,7 +44,16 @@ const dayNodes = displayDays.days?.map(day => <DaySmall className="month-day" ke
           <div className="month-head">
             <h3>{displayDays.month ? displayDays.month : ''}</h3>
           </div>
-          <div className="month-body" id={5}>
+          <div className="day-name">
+            <div className="day-of-week"><h3>Sunday</h3></div>
+            <div className="day-of-week"><h3>Monday</h3></div>
+            <div className="day-of-week"><h3>Tuesday</h3></div>
+            <div className="day-of-week"><h3>Wednesday</h3></div>
+            <div className="day-of-week"><h3>Thursday</h3></div>
+            <div className="day-of-week"><h3>Friday</h3></div>
+            <div className="day-of-week"><h3>Saturday</h3></div>
+          </div>
+          <div className="month-body">
             {dayNodes}
           </div>
         </div>
