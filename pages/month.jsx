@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getTargetDate } from '../selectors/calendarSelectors';
 import { useCalendar } from '../hooks/calendarHooks';
 import { setTargetDate } from '../actions/calendarActions';
+import CalendarHead from '../components/CalendarHead';
 
 moment().format();
 
@@ -34,7 +35,7 @@ export default function month() {
     });
   }, [monthTarget]);
 
-  const dayNodes = displayDays.days?.map(day => <DaySmall className="month-day" key={day} day={day}/>)
+  const dayNodes = displayDays.days?.map(day => moment(day).month() === moment(monthTarget).month() ? <DaySmall className="month-day" key={day} day={day}/> : <DaySmall className="other-month-day" key={day} day={day}/>)
 
   return (
     <div>
@@ -42,15 +43,9 @@ export default function month() {
         <title>Family Calendar: Month View</title>
       </Head>
       <main className="page-container">
-        {/* MAKE NAV */}
         <h1>The Jefferson Family</h1>
-        {/* MAKE NAV */}
         <div className="month-container">
-          <div className="month-head">
-            <button onClick={() => handleTargetChange(moment(targetDate).subtract(1, 'months').format())}>Previous</button>
-            <h3>{displayDays.month ? displayDays.month : ''}</h3>
-            <button onClick={() => handleTargetChange(moment(targetDate).add(1, 'months').format())}>Next</button>
-          </div>
+          <CalendarHead type='months' title={displayDays.month ? displayDays.month : ''}/>
           <div className="day-name">
             <div className="day-of-week"><h3>Sunday</h3></div>
             <div className="day-of-week"><h3>Monday</h3></div>
