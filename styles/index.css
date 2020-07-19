@@ -64,22 +64,22 @@
   grid-column: 1;
 }
 
-.month-day {
+.calendar-node {
   height: 100%;
   border: 2px solid black;
 }
 
-.month-day h3 {
+.calendar-node h3 {
   top: 0;
 }
 
-.other-month-day {
+.other-day-node {
   height: 100%;
   border: 2px solid black;
   background-color: lightgray;
 }
 
-.other-month-day h3 {
+.other-day-node h3 {
   top: 0;
 }
 

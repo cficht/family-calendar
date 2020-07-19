@@ -12,7 +12,6 @@ export const useCalendar = () => {
   }, [])
 
   const handleTargetChange = (newDay) => {
-    console.log(newDay)
     dispatch(setTargetDate(newDay))
   }
 

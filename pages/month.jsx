@@ -1,14 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import moment from 'moment';
-import DaySmall from '../components/DaySmall';
-import { useSelector, useDispatch } from 'react-redux';
-import { getTargetDate } from '../selectors/calendarSelectors';
 import { useCalendar } from '../hooks/calendarHooks';
-import { setTargetDate } from '../actions/calendarActions';
 import CalendarHead from '../components/CalendarHead';
-
-moment().format();
+import CalendarNodes from '../components/CalendarNodes';
+import Link from 'next/link';
 
 export default function month() {
   const [monthTarget, setMonthTarget] = useState('');
@@ -30,12 +26,12 @@ export default function month() {
     const postDays = [...Array(Number(end))].map((_, i) => moment(`${months + 1}-${monthDays.length}-${years}`).add(i + 1, 'days').format());
 
     setDisplayDays({
-      month: moment().month(months).format('MMMM'),
+      month: moment().year(years).month(months).format('MMMM YYYY'),
       days: [...preDays, ...monthDays, ...postDays],
     });
   }, [monthTarget]);
 
-  const dayNodes = displayDays.days?.map(day => moment(day).month() === moment(monthTarget).month() ? <DaySmall className="month-day" key={day} day={day}/> : <DaySmall className="other-month-day" key={day} day={day}/>)
+  const dayNodes = displayDays.days?.map(day => moment(day).month() === moment(monthTarget).month() ? <CalendarNodes className="calendar-node" key={day} node={day} type='/day' display='D'/> : <CalendarNodes className="other-day-node" key={day} node={day} type='/day' display='D'/>)
 
   return (
     <div>
@@ -44,6 +40,7 @@ export default function month() {
       </Head>
       <main className="page-container">
         <h1>The Jefferson Family</h1>
+        <Link href="/year"><a>Year</a></Link>
         <div className="month-container">
           <CalendarHead type='months' title={displayDays.month ? displayDays.month : ''}/>
           <div className="day-name">

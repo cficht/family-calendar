@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
-import { useRouter } from 'next/router'
 import moment from 'moment';
 import { useCalendar } from '../hooks/calendarHooks';
 import Link from 'next/link';
@@ -21,6 +20,7 @@ export default function day() {
       </Head>
       <main className="page-container">
         <h1>The Jefferson Family</h1>
+        <Link href="/year"><a>Year</a></Link>
         <Link href="/month"><a>Month</a></Link>
         <div className="day-container">
           <CalendarHead type='days' title={dayTarget}/>

@@ -3,14 +3,13 @@ import moment from 'moment';
 import Link from 'next/link';
 import { useCalendar } from '../hooks/calendarHooks';
 
-export default function DaySmall({ className, day }) {
-  const date = moment(day).format('MM-DD-YYYY')
+export default function CalendarNodes({ className, node, type, display }) {
   const { handleTargetChange } = useCalendar();
 
   return (
     <div className={className} >
-      <Link href="/day" as={`/day`}>
-        <a onClick={() => handleTargetChange(moment(day).format())}><h3>{moment(day).format('D')}</h3></a>
+      <Link href={type} as={type}>
+        <a onClick={() => handleTargetChange(moment(node).format())}><h3>{moment(node).format(display)}</h3></a>
       </Link>
     </div>
   )
