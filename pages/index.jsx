@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import Nav from '../components/Nav';
+import Splash from '../components/Splash';
 
 export default function Home() {
   return (
@@ -10,7 +10,7 @@ export default function Home() {
       </Head>
 
       <main>
-        <Nav />
+        <Splash />
       </main>
 
       <footer>

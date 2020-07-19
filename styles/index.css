@@ -17,9 +17,16 @@
 }
 
 .month-head {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
   width: 100%;
   text-align: center;
   border: 2px solid black;
+}
+
+.month-head button {
+  width: 10%;
 }
 
 .day-name {
@@ -62,9 +69,16 @@
 }
 
 .day-head {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
   width: 100%;
   text-align: center;
   border: 2px solid black;
+}
+
+.day-head button {
+  width: 10%;
 }
 
 .day-body {

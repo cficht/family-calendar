@@ -2,20 +2,25 @@ import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import moment from 'moment';
 import DaySmall from '../components/DaySmall';
+import { useSelector, useDispatch } from 'react-redux';
+import { getTargetDate } from '../selectors/calendarSelectors';
+import { useCalendar } from '../hooks/calendarHooks';
+import { setTargetDate } from '../actions/calendarActions';
 
 moment().format();
 
 export default function month() {
-  const [targetDate, setTargetDate] = useState('');
+  const [monthTarget, setMonthTarget] = useState('');
   const [displayDays, setDisplayDays] = useState([]);
+  const { targetDate, handleTargetChange } = useCalendar();
 
   useEffect(() => {
-    setTargetDate(moment('05-12-2020').format('MM-DD-YYYY'));
-  }, []);
+    if(targetDate) setMonthTarget(moment(targetDate).format('MM-DD-YYYY'));
+  }, [targetDate]);
 
   useEffect(() => {
-    if (!targetDate) return;
-    const { years, months, date } = moment(targetDate).toObject()
+    if (!monthTarget) return;
+    const { years, months, date } = moment(monthTarget).toObject()
 
     const monthDays = [...Array(moment((months + 1).toString()).daysInMonth())].map((_, i) => moment().year(years).month(months).date(i + 1).format());
     const beginning = moment(monthDays[0]).day();
@@ -27,11 +32,9 @@ export default function month() {
       month: moment().month(months).format('MMMM'),
       days: [...preDays, ...monthDays, ...postDays],
     });
-  }, [targetDate]);
+  }, [monthTarget]);
 
-
-
-const dayNodes = displayDays.days?.map(day => <DaySmall className="month-day" key={day} day={day}/>)
+  const dayNodes = displayDays.days?.map(day => <DaySmall className="month-day" key={day} day={day}/>)
 
   return (
     <div>
@@ -39,10 +42,14 @@ const dayNodes = displayDays.days?.map(day => <DaySmall className="month-day" ke
         <title>Family Calendar: Month View</title>
       </Head>
       <main className="page-container">
+        {/* MAKE NAV */}
         <h1>The Jefferson Family</h1>
+        {/* MAKE NAV */}
         <div className="month-container">
           <div className="month-head">
+            <button onClick={() => handleTargetChange(moment(targetDate).subtract(1, 'months').format())}>Previous</button>
             <h3>{displayDays.month ? displayDays.month : ''}</h3>
+            <button onClick={() => handleTargetChange(moment(targetDate).add(1, 'months').format())}>Next</button>
           </div>
           <div className="day-name">
             <div className="day-of-week"><h3>Sunday</h3></div>
