@@ -10,6 +10,11 @@
             "StackName": "amplify-familycalendar-devback-165441",
             "StackId": "arn:aws:cloudformation:us-west-2:000526699068:stack/amplify-familycalendar-devback-165441/372ff900-ca1b-11ea-8f01-06c1882c17fc",
             "AmplifyAppId": "d348vv0o1kgsee"
+        },
+        "categories": {
+            "auth": {
+                "familycalendar529ab2c0": {}
+            }
         }
     }
 }
