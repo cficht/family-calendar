@@ -1,15 +1,11 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Link from 'next/link';
-import { useDispatch } from 'react-redux';
-import { setTargetDate } from '../actions/calendarActions';
-import { useCalendar } from '../hooks/calendarHooks';
 
 export default function Nav() {
-  const { targetDate } = useCalendar();
-
   return (
-    <div>
-      <Link href="/month"><a>Enter</a></Link>
-    </div>
-  )
+    <section className="splash-body">
+      <h3>Welcome back!</h3>
+      <Link href="/month"><a href="/#">Enter</a></Link>
+    </section>
+  );
 }

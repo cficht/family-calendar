@@ -3,20 +3,22 @@ import { useEffect } from 'react';
 import { getTargetDate } from '../selectors/calendarSelectors';
 import { setTargetDate } from '../actions/calendarActions';
 
-export const useCalendar = () => {
+const useCalendar = () => {
   const dispatch = useDispatch();
   const targetDate = useSelector(getTargetDate);
 
   useEffect(() => {
-    if(!targetDate) dispatch(setTargetDate(new Date))
-  }, [])
+    if(!targetDate) dispatch(setTargetDate(new Date()));
+  }, []);
 
   const handleTargetChange = (newDay) => {
-    dispatch(setTargetDate(newDay))
-  }
+    dispatch(setTargetDate(newDay));
+  };
 
   return {
     targetDate,
-    handleTargetChange
+    handleTargetChange,
   };
 };
+
+export default useCalendar;

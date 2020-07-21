@@ -9,6 +9,7 @@ export default function SignUp() {
 
   return (
     <section className="auth-box">
+      <h3>Create an Account</h3>
       <form onSubmit={(e) => signUp(e, userName, email, family, password)}>
         <input type="text" value={userName} onChange={(e) => setUserName(e.target.value)} placeholder="Username" />
         <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" />

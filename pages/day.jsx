@@ -2,12 +2,15 @@ import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
 import moment from 'moment';
 import Link from 'next/link';
-import { useCalendar } from '../hooks/calendarHooks';
+import useCalendar from '../hooks/calendarHooks';
 import CalendarHead from '../components/CalendarHead';
+import SignOut from '../components/SignOut';
+import useUser from '../hooks/userHooks';
 
 export default function day() {
   const [dayTarget, setDayTarget] = useState('');
   const { targetDate, handleTargetChange } = useCalendar();
+  const { user } = useUser();
 
   useEffect(() => {
     if(targetDate) setDayTarget(moment(targetDate).format('dddd, MMMM Do YYYY'));
@@ -29,6 +32,9 @@ export default function day() {
           </div>
         </div>
       </main>
+      <footer className="footer">
+        <SignOut />
+      </footer>
     </div>
   );
 }

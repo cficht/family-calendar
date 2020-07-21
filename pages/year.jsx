@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import moment from 'moment';
-import { useCalendar } from '../hooks/calendarHooks';
+import useCalendar from '../hooks/calendarHooks';
 import CalendarHead from '../components/CalendarHead';
 import CalendarNodes from '../components/CalendarNodes';
+import SignOut from '../components/SignOut';
+import useUser from '../hooks/userHooks';
 
 export default function year() {
   const [yearTarget, setYearTarget] = useState('');
   const [displayMonths, setDisplayMonths] = useState([]);
   const { targetDate, handleTargetChange } = useCalendar();
+  const { user } = useUser();
 
   useEffect(() => {
     if(targetDate) setYearTarget(moment(targetDate).format('MM-DD-YYYY'));
@@ -41,6 +44,9 @@ export default function year() {
           </div>
         </div>
       </main>
+      <footer className="footer">
+        <SignOut />
+      </footer>
     </div>
   );
 }

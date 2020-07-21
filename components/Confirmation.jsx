@@ -7,6 +7,7 @@ export default function Confirmation() {
 
   return (
     <section className="auth-box">
+      <h3>Confirm Your Account</h3>
       <form onSubmit={(e) => confirmSignUp(e, userName, confirmation)}>
         <input type="text" value={userName} onChange={(e) => setUserName(e.target.value)} placeholder="Username" />
         <input type="text" value={confirmation} onChange={(e) => setConfirmation(e.target.value)} placeholder="Code" />

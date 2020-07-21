@@ -1,21 +1,25 @@
 import Head from 'next/head';
 import { Auth, API } from 'aws-amplify';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Splash from '../components/Splash';
 import config from '../src/aws-exports';
 import SignUp from '../components/SignUp';
 import Confirmation from '../components/Confirmation';
 import SignIn from '../components/SignIn';
 import SignOut from '../components/SignOut';
+import useUser from '../hooks/userHooks';
 
 API.configure(config);
 
 export default function Home() {
-  useEffect(() => {
-    Auth.currentAuthenticatedUser()
-      .then((user) => console.log(user))
-      .catch((err) => console.log(err));
-  }, []);
+  const { user } = useUser();
+  const [logType, setLogType] = useState(0);
+
+  console.log(user);
+  const renderLogType = () => {
+    if(logType === 0) return <SignIn />;
+    if(logType === 1) return <SignUp />;
+  };
 
   return (
     <div className="container">
@@ -24,13 +28,12 @@ export default function Home() {
       </Head>
 
       <main className="main-body">
-        <Splash />
-        <SignUp />
-        <Confirmation />
-        <SignIn />
+        {user ? null : <button type="button" onClick={() => setLogType(logType - 1)} disabled={logType === 0}>&larr;</button>}
+        {user ? <Splash /> : renderLogType()}
+        {user ? null : <button type="button" onClick={() => setLogType(logType + 1)} disabled={logType === 1}>&rarr;</button>}
       </main>
       <footer className="footer">
-        <SignOut />
+        {user ? <SignOut /> : null}
       </footer>
     </div>
   );

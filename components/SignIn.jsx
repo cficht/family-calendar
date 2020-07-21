@@ -7,6 +7,7 @@ export default function SignIn() {
 
   return (
     <section className="auth-box">
+      <h3>Sign in to Family Calendar</h3>
       <form onSubmit={(e) => signIn(e, userName, password)}>
         <input type="text" value={userName} onChange={(e) => setUserName(e.target.value)} placeholder="Username" />
         <input type="text" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />

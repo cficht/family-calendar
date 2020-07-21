@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import moment from 'moment';
-import { useCalendar } from '../hooks/calendarHooks';
+import useCalendar from '../hooks/calendarHooks';
 import CalendarHead from '../components/CalendarHead';
 import CalendarNodes from '../components/CalendarNodes';
 import Link from 'next/link';
+import SignOut from '../components/SignOut';
+import useUser from '../hooks/userHooks';
 
 export default function month() {
   const [monthTarget, setMonthTarget] = useState('');
   const [displayDays, setDisplayDays] = useState([]);
   const { targetDate, handleTargetChange } = useCalendar();
+  const { user } = useUser();
 
   useEffect(() => {
     if(targetDate) setMonthTarget(moment(targetDate).format('MM-DD-YYYY'));
@@ -57,6 +60,9 @@ export default function month() {
           </div>
         </div>
       </main>
+      <footer className="footer">
+        <SignOut />
+      </footer>
     </div>
   );
 }
