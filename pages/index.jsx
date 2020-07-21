@@ -1,10 +1,9 @@
 import Head from 'next/head';
-import { Auth, API } from 'aws-amplify';
-import { useEffect, useState } from 'react';
+import { API } from 'aws-amplify';
+import { useState } from 'react';
 import Splash from '../components/Splash';
 import config from '../src/aws-exports';
 import SignUp from '../components/SignUp';
-import Confirmation from '../components/Confirmation';
 import SignIn from '../components/SignIn';
 import SignOut from '../components/SignOut';
 import useUser from '../hooks/userHooks';
@@ -15,7 +14,6 @@ export default function Home() {
   const { user } = useUser();
   const [logType, setLogType] = useState(0);
 
-  console.log(user);
   const renderLogType = () => {
     if(logType === 0) return <SignIn />;
     if(logType === 1) return <SignUp />;

@@ -47,6 +47,7 @@ export async function signIn(e, userName, password) {
   e.preventDefault();
   try {
     await Auth.signIn(userName, password);
+
     Router.push('/month');
   } catch(error) {
     console.log('error signing in', error);

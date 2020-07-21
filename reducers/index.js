@@ -1,14 +1,8 @@
-import { SET_TARGET_DATE } from "../actions/calendarActions";
+import { combineReducers } from 'redux';
+import calendar from './calendarReducer';
+import user from './userReducer';
 
-const initialState = {
-  targetDate: ''
-};
-
-export default function reducer(state = initialState, action) {
-  switch(action.type) {
-    case SET_TARGET_DATE:
-      return {...state, targetDate: action.payload};
-    default:
-      return state;
-  }
-}
+export default combineReducers({
+  calendar,
+  user,
+});

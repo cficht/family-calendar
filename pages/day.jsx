@@ -9,8 +9,12 @@ import useUser from '../hooks/userHooks';
 
 export default function day() {
   const [dayTarget, setDayTarget] = useState('');
-  const { targetDate, handleTargetChange } = useCalendar();
-  const { user } = useUser();
+  const { targetDate } = useCalendar();
+  const { family, checkLog } = useUser();
+
+  useEffect(() => {
+    checkLog();
+  }, []);
 
   useEffect(() => {
     if(targetDate) setDayTarget(moment(targetDate).format('dddd, MMMM Do YYYY'));
@@ -22,7 +26,7 @@ export default function day() {
         <title>Family Calendar: Day View</title>
       </Head>
       <main className="page-container">
-        <h1>The Jefferson Family</h1>
+        <h1>The {family.name} Family</h1>
         <Link href="/year"><a>Year</a></Link>
         <Link href="/month"><a>Month</a></Link>
         <div className="day-container">

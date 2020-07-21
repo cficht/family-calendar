@@ -1,1 +1,1 @@
-export const getTargetDate = state => state.targetDate;
+export const getTargetDate = (state) => state.calendar.targetDate;

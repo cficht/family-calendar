@@ -11,16 +11,20 @@ import useUser from '../hooks/userHooks';
 export default function month() {
   const [monthTarget, setMonthTarget] = useState('');
   const [displayDays, setDisplayDays] = useState([]);
-  const { targetDate, handleTargetChange } = useCalendar();
-  const { user } = useUser();
+  const { targetDate } = useCalendar();
+  const { family, checkLog } = useUser();
+
+  useEffect(() => {
+    checkLog();
+  }, []);
 
   useEffect(() => {
     if(targetDate) setMonthTarget(moment(targetDate).format('MM-DD-YYYY'));
   }, [targetDate]);
 
   useEffect(() => {
-    if (!monthTarget) return;
-    const { years, months, date } = moment(monthTarget).toObject()
+    if(!monthTarget) return;
+    const { years, months } = moment(monthTarget).toObject();
 
     const monthDays = [...Array(moment((months + 1).toString()).daysInMonth())].map((_, i) => moment().year(years).month(months).date(i + 1).format());
     const beginning = moment(monthDays[0]).day();
@@ -34,7 +38,7 @@ export default function month() {
     });
   }, [monthTarget]);
 
-  const dayNodes = displayDays.days?.map(day => moment(day).month() === moment(monthTarget).month() ? <CalendarNodes className="calendar-node" key={day} node={day} type='/day' display='D'/> : <CalendarNodes className="other-day-node" key={day} node={day} type='/day' display='D'/>)
+  const dayNodes = displayDays.days?.map(day => moment(day).month() === moment(monthTarget).month() ? <CalendarNodes className="calendar-node" key={day} node={day} type='/day' display='D'/> : <CalendarNodes className="other-day-node" key={day} node={day} type='/day' display='D'/>);
 
   return (
     <div>
@@ -42,7 +46,7 @@ export default function month() {
         <title>Family Calendar: Month View</title>
       </Head>
       <main className="page-container">
-        <h1>The Jefferson Family</h1>
+        <h1>The {family.name} Family</h1>
         <Link href="/year"><a>Year</a></Link>
         <div className="month-container">
           <CalendarHead type='months' title={displayDays.month ? displayDays.month : ''}/>

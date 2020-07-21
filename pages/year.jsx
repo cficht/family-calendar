@@ -10,25 +10,29 @@ import useUser from '../hooks/userHooks';
 export default function year() {
   const [yearTarget, setYearTarget] = useState('');
   const [displayMonths, setDisplayMonths] = useState([]);
-  const { targetDate, handleTargetChange } = useCalendar();
-  const { user } = useUser();
+  const { targetDate } = useCalendar();
+  const { family, checkLog } = useUser();
+
+  useEffect(() => {
+    checkLog();
+  }, []);
 
   useEffect(() => {
     if(targetDate) setYearTarget(moment(targetDate).format('MM-DD-YYYY'));
   }, [targetDate]);
 
   useEffect(() => {
-    if (!yearTarget) return;
-    const { years, months } = moment(yearTarget).toObject()
+    if(!yearTarget) return;
+    const { years } = moment(yearTarget).toObject();
     const yearMonths = [...Array(12)].map((_, i) => moment().year(years).month(i).format());
 
     setDisplayMonths({
       year: years,
       months: yearMonths
     });
-  }, [yearTarget])
+  }, [yearTarget]);
 
-  const monthNodes = displayMonths.months?.map(month => <CalendarNodes className="calendar-node" key={month} node={month} type='/month' display='MMM'/>)
+  const monthNodes = displayMonths.months?.map(month => <CalendarNodes className="calendar-node" key={month} node={month} type='/month' display='MMM'/>);
 
   return (
     <div>
@@ -36,7 +40,7 @@ export default function year() {
         <title>Family Calendar: Year View</title>
       </Head>
       <main className="page-container">
-        <h1>The Jefferson Family</h1>
+        <h1>The {family.name} Family</h1>
         <div className="month-container">
           <CalendarHead type='years' title={displayMonths.year ? displayMonths.year : ''}/>
           <div className="month-body">
