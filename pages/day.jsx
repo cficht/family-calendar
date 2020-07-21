@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
 import moment from 'moment';
-import { useCalendar } from '../hooks/calendarHooks';
 import Link from 'next/link';
+import { useCalendar } from '../hooks/calendarHooks';
 import CalendarHead from '../components/CalendarHead';
 
 export default function day() {
@@ -23,12 +23,12 @@ export default function day() {
         <Link href="/year"><a>Year</a></Link>
         <Link href="/month"><a>Month</a></Link>
         <div className="day-container">
-          <CalendarHead type='days' title={dayTarget}/>
+          <CalendarHead type="days" title={dayTarget} />
           <div className="day-body">
             Events
           </div>
         </div>
       </main>
     </div>
-  )
+  );
 }

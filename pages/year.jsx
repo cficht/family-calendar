@@ -23,7 +23,7 @@ export default function year() {
       year: years,
       months: yearMonths
     });
-  }, [yearTarget]);
+  }, [yearTarget])
 
   const monthNodes = displayMonths.months?.map(month => <CalendarNodes className="calendar-node" key={month} node={month} type='/month' display='MMM'/>)
 
