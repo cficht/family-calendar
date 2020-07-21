@@ -8,6 +8,18 @@
   align-items: center;
 }
 
+.main-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .month-container {
   display: flex;
   flex-direction: column;
@@ -108,4 +120,30 @@
   width: 100%;
   text-align: center;
   border: 2px solid black;
+}
+
+.auth-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 30%;
+  margin: 20px;
+  padding: 10px;
+  border: 2px solid black;
+  border-radius: 20px;
+  background-color: whitesmoke;
+}
+
+.auth-box input{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+}
+
+.auth-box button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
 }
