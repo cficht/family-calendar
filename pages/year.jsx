@@ -6,6 +6,7 @@ import CalendarHead from '../components/CalendarHead';
 import CalendarNodes from '../components/CalendarNodes';
 import SignOut from '../components/SignOut';
 import useUser from '../hooks/userHooks';
+import Link from 'next/link';
 
 export default function year() {
   const [yearTarget, setYearTarget] = useState('');
@@ -40,7 +41,8 @@ export default function year() {
         <title>Family Calendar: Year View</title>
       </Head>
       <main className="page-container">
-        <h1>The {family.name} Family</h1>
+        <h1>The {family?.name} Family</h1>
+        <Link href="/admin"><a>Admin</a></Link>
         <div className="month-container">
           <CalendarHead type='years' title={displayMonths.year ? displayMonths.year : ''}/>
           <div className="month-body">

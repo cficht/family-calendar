@@ -1,4 +1,4 @@
-import { SET_USER, SET_FAMILY } from '../actions/userActions';
+import { SET_USER, SET_FAMILY, ADD_MEMBER } from '../actions/userActions';
 
 const initialState = {
   user: '',
@@ -11,6 +11,8 @@ export default function reducer(state = initialState, action) {
       return { ...state, user: action.payload };
     case SET_FAMILY:
       return { ...state, family: action.payload };
+    case ADD_MEMBER:
+      return { ...state, family: { ...state.family, members: { ...state.family.members, items: [...state.family.members.items, action.payload] } } };
     default:
       return state;
   }

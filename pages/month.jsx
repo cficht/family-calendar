@@ -46,8 +46,9 @@ export default function month() {
         <title>Family Calendar: Month View</title>
       </Head>
       <main className="page-container">
-        <h1>The {family.name} Family</h1>
+        <h1>The {family?.name} Family</h1>
         <Link href="/year"><a>Year</a></Link>
+        <Link href="/admin"><a>Admin</a></Link>
         <div className="month-container">
           <CalendarHead type='months' title={displayDays.month ? displayDays.month : ''}/>
           <div className="day-name">

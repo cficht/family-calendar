@@ -13,7 +13,9 @@
         },
         "categories": {
             "auth": {
-                "familycalendar529ab2c0": {}
+                "familycalendar529ab2c0": {},
+                "familycalendar1a471df3": {},
+                "userPoolGroups": {}
             }
         }
     }

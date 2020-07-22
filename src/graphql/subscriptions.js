@@ -6,6 +6,18 @@ export const onCreateFamily = /* GraphQL */ `
     onCreateFamily {
       id
       name
+      members {
+        items {
+          id
+          name
+          color
+          icon
+          familyID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
       createdAt
       updatedAt
     }
@@ -16,6 +28,18 @@ export const onUpdateFamily = /* GraphQL */ `
     onUpdateFamily {
       id
       name
+      members {
+        items {
+          id
+          name
+          color
+          icon
+          familyID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
       createdAt
       updatedAt
     }
@@ -26,6 +50,84 @@ export const onDeleteFamily = /* GraphQL */ `
     onDeleteFamily {
       id
       name
+      members {
+        items {
+          id
+          name
+          color
+          icon
+          familyID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onCreateMember = /* GraphQL */ `
+  subscription OnCreateMember {
+    onCreateMember {
+      id
+      name
+      color
+      icon
+      familyID
+      family {
+        id
+        name
+        members {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateMember = /* GraphQL */ `
+  subscription OnUpdateMember {
+    onUpdateMember {
+      id
+      name
+      color
+      icon
+      familyID
+      family {
+        id
+        name
+        members {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteMember = /* GraphQL */ `
+  subscription OnDeleteMember {
+    onDeleteMember {
+      id
+      name
+      color
+      icon
+      familyID
+      family {
+        id
+        name
+        members {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
       createdAt
       updatedAt
     }

@@ -6,6 +6,18 @@ export const getFamily = /* GraphQL */ `
     getFamily(id: $id) {
       id
       name
+      members {
+        items {
+          id
+          name
+          color
+          icon
+          familyID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
       createdAt
       updatedAt
     }
@@ -21,6 +33,57 @@ export const listFamilys = /* GraphQL */ `
       items {
         id
         name
+        members {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const getMember = /* GraphQL */ `
+  query GetMember($id: ID!) {
+    getMember(id: $id) {
+      id
+      name
+      color
+      icon
+      familyID
+      family {
+        id
+        name
+        members {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listMembers = /* GraphQL */ `
+  query ListMembers(
+    $filter: ModelMemberFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listMembers(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        name
+        color
+        icon
+        familyID
+        family {
+          id
+          name
+          createdAt
+          updatedAt
+        }
         createdAt
         updatedAt
       }

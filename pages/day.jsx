@@ -26,9 +26,10 @@ export default function day() {
         <title>Family Calendar: Day View</title>
       </Head>
       <main className="page-container">
-        <h1>The {family.name} Family</h1>
+        <h1>The {family?.name} Family</h1>
         <Link href="/year"><a>Year</a></Link>
         <Link href="/month"><a>Month</a></Link>
+        <Link href="/admin"><a>Admin</a></Link>
         <div className="day-container">
           <CalendarHead type="days" title={dayTarget} />
           <div className="day-body">

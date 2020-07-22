@@ -9,6 +9,18 @@ export const createFamily = /* GraphQL */ `
     createFamily(input: $input, condition: $condition) {
       id
       name
+      members {
+        items {
+          id
+          name
+          color
+          icon
+          familyID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
       createdAt
       updatedAt
     }
@@ -22,6 +34,18 @@ export const updateFamily = /* GraphQL */ `
     updateFamily(input: $input, condition: $condition) {
       id
       name
+      members {
+        items {
+          id
+          name
+          color
+          icon
+          familyID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
       createdAt
       updatedAt
     }
@@ -35,6 +59,93 @@ export const deleteFamily = /* GraphQL */ `
     deleteFamily(input: $input, condition: $condition) {
       id
       name
+      members {
+        items {
+          id
+          name
+          color
+          icon
+          familyID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const createMember = /* GraphQL */ `
+  mutation CreateMember(
+    $input: CreateMemberInput!
+    $condition: ModelMemberConditionInput
+  ) {
+    createMember(input: $input, condition: $condition) {
+      id
+      name
+      color
+      icon
+      familyID
+      family {
+        id
+        name
+        members {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateMember = /* GraphQL */ `
+  mutation UpdateMember(
+    $input: UpdateMemberInput!
+    $condition: ModelMemberConditionInput
+  ) {
+    updateMember(input: $input, condition: $condition) {
+      id
+      name
+      color
+      icon
+      familyID
+      family {
+        id
+        name
+        members {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteMember = /* GraphQL */ `
+  mutation DeleteMember(
+    $input: DeleteMemberInput!
+    $condition: ModelMemberConditionInput
+  ) {
+    deleteMember(input: $input, condition: $condition) {
+      id
+      name
+      color
+      icon
+      familyID
+      family {
+        id
+        name
+        members {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
       createdAt
       updatedAt
     }
