@@ -2,16 +2,16 @@ import { useEffect } from 'react';
 import { Auth } from 'aws-amplify';
 import { useDispatch, useSelector } from 'react-redux';
 import Router from 'next/router';
-import { setUser, setFamily, addMember } from '../actions/userActions';
-import { selectUser, selectFamily } from '../selectors/userSelectors';
+import { setUser, setFamily, addMember, changeMember, subtractMember } from '../actions/userActions';
+import { selectUser, selectFamily, selectMembers } from '../selectors/userSelectors';
 import { getFamilyById } from '../pages/api/family';
 import { nanoid } from 'nanoid';
-import { postMember } from '../pages/api/family';
 
 const useUser = () => {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
   const family = useSelector(selectFamily);
+  const members = useSelector(selectMembers);
 
   useEffect(() => {
     if(!user) {
@@ -39,15 +39,31 @@ const useUser = () => {
       familyID: family.id
     };
     dispatch(addMember(member));
-    // postMember(member)
-    //   .then(res => console.log(res));
+  };
+
+  const handleUpdateMember = (e, memberId, memberName, memberColor) => {
+    e.preventDefault();
+    const member = {
+      id: memberId,
+      name: memberName,
+      color: memberColor
+    };
+    dispatch(changeMember(member));
+  };
+
+  const handleDeleteMember = (e, memberId) => {
+    e.preventDefault();
+    dispatch(subtractMember(memberId));
   };
 
   return {
     user,
     family,
+    members,
     checkLog,
-    handleAddMember
+    handleAddMember,
+    handleUpdateMember,
+    handleDeleteMember
   };
 };
 

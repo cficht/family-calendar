@@ -24,7 +24,6 @@ export default function Home() {
       <Head>
         <title>Family Calendar</title>
       </Head>
-
       <main className="main-body">
         {user ? null : <button type="button" onClick={() => setLogType(logType - 1)} disabled={logType === 0}>&larr;</button>}
         {user ? <Splash /> : renderLogType()}

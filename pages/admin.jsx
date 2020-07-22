@@ -1,34 +1,38 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import useUser from '../hooks/userHooks';
 import Head from 'next/head';
 import Link from 'next/link';
 import SignOut from '../components/SignOut';
+import AddMember from '../components/AddMember';
+import UpdateMemberNode from '../components/UpdateMemberNode';
 
 export default function admin() {
-  const { family, checkLog, handleAddMember } = useUser();
-  const [memberName, setMemberName] = useState('');
-  const [memberColor, setMemberColor] = useState('#000000');
+  const { family, members, checkLog } = useUser();
 
   useEffect(() => {
     checkLog();
   }, []);
+
+  const memberNodes = members?.map(member => (
+    <UpdateMemberNode key={member.id} member={member}/>
+  ));
   
   return (
     <div>
       <Head>
-        <title>Family Calendar: Month View</title>
+        <title>Family Calendar: Admin View</title>
       </Head>
       <main className="page-container">
         <h1>The {family?.name} Family</h1>
         <Link href="/year"><a>Year</a></Link>
         <Link href="/month"><a>Month</a></Link>
-        <div className="month-container">
-          <section>
-            <form onSubmit={(e) => handleAddMember(e, memberName, memberColor)}>
-              <input type="text" value={memberName} onChange={(e) => setMemberName(e.target.value)} placeholder="Name"/>
-              <input type="color" value={memberColor} onChange={(e) => setMemberColor(e.target.value)}/>
-              <button type="submit">Add</button>
-            </form>
+        <div className="admin-container">
+          <AddMember />
+          <section className="member-container">
+            <h2>Update Members:</h2> 
+            <ul className="member-list">
+              {memberNodes}
+            </ul>
           </section>
         </div>
       </main>
