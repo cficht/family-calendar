@@ -1,0 +1,14 @@
+type Family @model {
+  id: ID!
+  name: String!
+  members: [Member] @connection(keyName: "byFamily", fields: ["id"])
+}
+
+type Member @model @key(name: "byFamily", fields: ["familyID"]) {
+  id: ID!
+  name: String!
+  color: String!
+  icon: String
+  familyID: ID!
+  family: Family @connection(fields: ["familyID"])
+}
