@@ -2,11 +2,9 @@ import React, { useState, useEffect } from 'react';
 import useUser from '../hooks/userHooks';
 import useCalendar from '../hooks/calendarHooks';
 import moment from 'moment';
-import { nanoid } from 'nanoid';
-import { postEvent } from '../pages/api/family';
 
 export default function AddEvent() {
-  const { members } = useUser();
+  const { members, handleAddEvent } = useUser();
   const { targetDate } = useCalendar();
 
   const [eventName, setEventName] = useState('');
@@ -30,24 +28,10 @@ export default function AddEvent() {
 
   const memberNodes = members?.map(member => <option value={member.id} key={member.id}>{member.name}</option>);
 
-  const handleAddEvent = (e) => {
-    e.preventDefault();
-    const eventId = nanoid();
-    const event = {
-      id: eventId,
-      name: eventName,
-      description: eventDescription,
-      start: (moment(`${eventStartDate}  ${eventStartTime}`, 'YYYY-MM-DD HH:mm').format()),
-      end: (moment(`${eventEndDate}  ${eventEndTime}`, 'YYYY-MM-DD HH:mm').format()),
-      memberID: eventMember
-    };
-    postEvent(event)
-  };
-
   return (
     <section className="add-event-box">
       <h3>Add Event:</h3>
-      <form onSubmit={e => handleAddEvent(e)}>
+      <form onSubmit={e => handleAddEvent(e, eventName, eventDescription, eventStartDate, eventStartTime, eventEndDate, eventEndTime, eventMember)}>
         <label>Name:<input type="text" value={eventName} onChange={(e) => setEventName(e.target.value)}/></label>
         <label>Description:<textarea value={eventDescription} onChange={(e) => setEventDescription(e.target.value)}/></label>
         <label htmlFor="member-name">Member:

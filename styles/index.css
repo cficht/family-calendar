@@ -385,3 +385,19 @@
   margin: 10px;
   width: 50%;
 }
+
+.event-list {
+  list-style-type: none;
+  padding-inline-start: 0px;
+}
+
+.event-list-item {
+  display: flex;
+  justify-content: center;
+}
+
+.event-list-detail {
+  width: 50%;
+  margin: 10px;
+  background-color: whitesmoke;
+}

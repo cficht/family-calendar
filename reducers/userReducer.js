@@ -1,4 +1,4 @@
-import { SET_USER, SET_FAMILY, ADD_MEMBER, CHANGE_MEMBER, SUBTRACT_MEMBER } from '../actions/userActions';
+import { SET_USER, SET_FAMILY, ADD_MEMBER, CHANGE_MEMBER, SUBTRACT_MEMBER, ADD_EVENT, SUBTRACT_EVENT } from '../actions/userActions';
 
 const initialState = {
   user: '',
@@ -28,6 +28,32 @@ export default function reducer(state = initialState, action) {
       return { ...state, 
         family: { ...state.family, members: 
             { ...state.family.members, items: state.family.members.items.filter(item => action.payload.id !== item.id) } 
+        } 
+      };
+    case ADD_EVENT:
+      return { ...state, 
+        family: { ...state.family, members: 
+          { ...state.family.members, items: 
+          state.family.members.items.map(item => {
+            if(action.payload.memberID === item.id) {
+              item.events.items = [...item.events.items, action.payload];
+            }
+            return item;
+          })  
+          } 
+        } 
+      };
+    case SUBTRACT_EVENT:
+      return { ...state, 
+        family: { ...state.family, members: 
+            { ...state.family.members, items: 
+            state.family.members.items.map(item => {
+              if(action.payload.memberID === item.id) {
+                item.events.items = item.events.items.filter(event => action.payload.id !== event.id);
+              }
+              return item;
+            })  
+            } 
         } 
       };
     default:
