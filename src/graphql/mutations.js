@@ -96,6 +96,19 @@ export const createMember = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      events {
+        items {
+          id
+          name
+          description
+          start
+          end
+          memberID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
       createdAt
       updatedAt
     }
@@ -121,6 +134,19 @@ export const updateMember = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      events {
+        items {
+          id
+          name
+          description
+          start
+          end
+          memberID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
       createdAt
       updatedAt
     }
@@ -141,6 +167,124 @@ export const deleteMember = /* GraphQL */ `
         id
         name
         members {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      events {
+        items {
+          id
+          name
+          description
+          start
+          end
+          memberID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const createEvent = /* GraphQL */ `
+  mutation CreateEvent(
+    $input: CreateEventInput!
+    $condition: ModelEventConditionInput
+  ) {
+    createEvent(input: $input, condition: $condition) {
+      id
+      name
+      description
+      start
+      end
+      memberID
+      member {
+        id
+        name
+        color
+        icon
+        familyID
+        family {
+          id
+          name
+          createdAt
+          updatedAt
+        }
+        events {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateEvent = /* GraphQL */ `
+  mutation UpdateEvent(
+    $input: UpdateEventInput!
+    $condition: ModelEventConditionInput
+  ) {
+    updateEvent(input: $input, condition: $condition) {
+      id
+      name
+      description
+      start
+      end
+      memberID
+      member {
+        id
+        name
+        color
+        icon
+        familyID
+        family {
+          id
+          name
+          createdAt
+          updatedAt
+        }
+        events {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteEvent = /* GraphQL */ `
+  mutation DeleteEvent(
+    $input: DeleteEventInput!
+    $condition: ModelEventConditionInput
+  ) {
+    deleteEvent(input: $input, condition: $condition) {
+      id
+      name
+      description
+      start
+      end
+      memberID
+      member {
+        id
+        name
+        color
+        icon
+        familyID
+        family {
+          id
+          name
+          createdAt
+          updatedAt
+        }
+        events {
           nextToken
         }
         createdAt

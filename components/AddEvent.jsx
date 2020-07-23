@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import useUser from '../hooks/userHooks';
 import useCalendar from '../hooks/calendarHooks';
 import moment from 'moment';
+import { nanoid } from 'nanoid';
+import { postEvent } from '../pages/api/family';
 
 export default function AddEvent() {
   const { members } = useUser();
@@ -30,7 +32,16 @@ export default function AddEvent() {
 
   const handleAddEvent = (e) => {
     e.preventDefault();
-    console.log('HERE');
+    const eventId = nanoid();
+    const event = {
+      id: eventId,
+      name: eventName,
+      description: eventDescription,
+      start: (moment(`${eventStartDate}  ${eventStartTime}`, 'YYYY-MM-DD HH:mm').format()),
+      end: (moment(`${eventEndDate}  ${eventEndTime}`, 'YYYY-MM-DD HH:mm').format()),
+      memberID: eventMember
+    };
+    postEvent(event)
   };
 
   return (

@@ -84,6 +84,19 @@ export const onCreateMember = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      events {
+        items {
+          id
+          name
+          description
+          start
+          end
+          memberID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
       createdAt
       updatedAt
     }
@@ -106,6 +119,19 @@ export const onUpdateMember = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      events {
+        items {
+          id
+          name
+          description
+          start
+          end
+          memberID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
       createdAt
       updatedAt
     }
@@ -123,6 +149,115 @@ export const onDeleteMember = /* GraphQL */ `
         id
         name
         members {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      events {
+        items {
+          id
+          name
+          description
+          start
+          end
+          memberID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onCreateEvent = /* GraphQL */ `
+  subscription OnCreateEvent {
+    onCreateEvent {
+      id
+      name
+      description
+      start
+      end
+      memberID
+      member {
+        id
+        name
+        color
+        icon
+        familyID
+        family {
+          id
+          name
+          createdAt
+          updatedAt
+        }
+        events {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateEvent = /* GraphQL */ `
+  subscription OnUpdateEvent {
+    onUpdateEvent {
+      id
+      name
+      description
+      start
+      end
+      memberID
+      member {
+        id
+        name
+        color
+        icon
+        familyID
+        family {
+          id
+          name
+          createdAt
+          updatedAt
+        }
+        events {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteEvent = /* GraphQL */ `
+  subscription OnDeleteEvent {
+    onDeleteEvent {
+      id
+      name
+      description
+      start
+      end
+      memberID
+      member {
+        id
+        name
+        color
+        icon
+        familyID
+        family {
+          id
+          name
+          createdAt
+          updatedAt
+        }
+        events {
           nextToken
         }
         createdAt

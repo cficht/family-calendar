@@ -11,4 +11,15 @@ type Member @model @key(name: "byFamily", fields: ["familyID"]) {
   icon: String
   familyID: ID!
   family: Family @connection(fields: ["familyID"])
+  events: [Event] @connection(keyName: "byMember", fields: ["id"])
+}
+
+type Event @model @key(name: "byMember", fields: ["memberID"]) {
+  id: ID!
+  name: String!
+  description: String
+  start: String!
+  end: String!
+  memberID: ID!
+  member: Member @connection(fields: ["memberID"])
 }
