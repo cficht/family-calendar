@@ -2,22 +2,91 @@
   box-sizing: border-box;
 }
 
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .page-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: yellow;
+}
+
+.page-header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 10px;
+  background-color: pink;
+}
+
+.header {
+  width: 50%;
+  padding: 10px;
+  text-align: center;
+  font-size: 1.5em;
+  border: 2px solid black;
+}
+
+.header a {
+  margin: 20px;
+}
+
+.page-body {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  background-color: green;
+}
+
+.page-left {
+  width: 15%;
+  margin: 10px;
+  border: 2px solid black;
+}
+
+.left-container {
+  margin: 10px;
+}
+
+.page-left ul {
+  list-style-type: none;
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 0px;
+}
+
+.page-left li {
+  display: flex;
+  justify-content: center;
+}
+
+.page-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 85%;
+  background-color: red;
 }
 
 .main-body {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
 
 .footer {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 50%;
 }
 
 .splash-body {
@@ -27,11 +96,12 @@
   align-items: center;
 }
 
-.month-container {
+.calendar-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 85%;
+  margin: 20px;
   border: 2px solid black;
 }
 
@@ -72,14 +142,14 @@
   border: 2px solid black;
 }
 
-.month-body {
+.calendar-body {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   grid-auto-rows: 200px;
   width: 100%;
 }
 
-.month-body div:first-child {
+.calendar-body div:first-child {
   grid-column: 1;
 }
 
@@ -102,27 +172,6 @@
   top: 0;
 }
 
-.day-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 85%;
-  border: 2px solid black;
-}
-
-.day-head {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  width: 100%;
-  text-align: center;
-  border: 2px solid black;
-}
-
-.day-head button {
-  width: 10%;
-}
-
 .day-body {
   width: 100%;
   text-align: center;
@@ -139,6 +188,7 @@
   padding: 10px;
   border: 2px solid black;
   border-radius: 20px;
+  text-align: center;
   background-color: whitesmoke;
 }
 
@@ -160,7 +210,19 @@
   width: 70%;
 }
 
-
+.sign-out {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  margin: 20px;
+  padding: 10px;
+  border: 2px solid black;
+  border-radius: 20px;
+  text-align: center;
+  background-color: whitesmoke;
+}
 
 
 .admin-container {
@@ -168,7 +230,6 @@
   flex-direction: column;
   align-items: center;
   width: 85%;
-  
   border: 2px solid black;
 }
 

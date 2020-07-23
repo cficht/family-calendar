@@ -6,6 +6,8 @@ import useCalendar from '../hooks/calendarHooks';
 import CalendarHead from '../components/CalendarHead';
 import SignOut from '../components/SignOut';
 import useUser from '../hooks/userHooks';
+import Header from '../components/Header';
+import PageLeft from '../components/PageLeft';
 
 export default function day() {
   const [dayTarget, setDayTarget] = useState('');
@@ -26,20 +28,23 @@ export default function day() {
         <title>Family Calendar: Day View</title>
       </Head>
       <main className="page-container">
-        <h1>The {family?.name} Family</h1>
-        <Link href="/year"><a>Year</a></Link>
-        <Link href="/month"><a>Month</a></Link>
-        <Link href="/admin"><a>Admin</a></Link>
-        <div className="day-container">
-          <CalendarHead type="days" title={dayTarget} />
-          <div className="day-body">
-            Events
-          </div>
+        <div className="page-header">
+          <Header family={family}/>
         </div>
+        <div className="page-body">
+          <div className="page-left">
+            <PageLeft />
+          </div>
+          <div className="page-right">
+            <div className="calendar-container">
+              <CalendarHead type="days" title={dayTarget} />
+              <div className="day-body">
+            Events
+              </div>
+            </div>
+          </div>
+        </div> 
       </main>
-      <footer className="footer">
-        <SignOut />
-      </footer>
     </div>
   );
 }

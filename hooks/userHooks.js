@@ -29,7 +29,7 @@ const useUser = () => {
       .catch(() => Router.push('/'));
   };
 
-  const handleAddMember = (e, memberName, memberColor) => {
+  const handleAddMember = (e, memberName, memberColor, setMemberColor) => {
     e.preventDefault();
     const memberId = nanoid();
     const member = {
@@ -39,6 +39,7 @@ const useUser = () => {
       familyID: family.id
     };
     dispatch(addMember(member));
+    setMemberColor(`#${Math.floor(Math.random() * 16777215).toString(16)}`);
   };
 
   const handleUpdateMember = (e, memberId, memberName, memberColor) => {

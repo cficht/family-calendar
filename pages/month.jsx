@@ -4,9 +4,10 @@ import moment from 'moment';
 import useCalendar from '../hooks/calendarHooks';
 import CalendarHead from '../components/CalendarHead';
 import CalendarNodes from '../components/CalendarNodes';
-import Link from 'next/link';
 import SignOut from '../components/SignOut';
 import useUser from '../hooks/userHooks';
+import PageLeft from '../components/PageLeft';
+import Header from '../components/Header';
 
 export default function month() {
   const [monthTarget, setMonthTarget] = useState('');
@@ -45,29 +46,33 @@ export default function month() {
       <Head>
         <title>Family Calendar: Month View</title>
       </Head>
-      <main className="page-container">
-        <h1>The {family?.name} Family</h1>
-        <Link href="/year"><a>Year</a></Link>
-        <Link href="/admin"><a>Admin</a></Link>
-        <div className="month-container">
-          <CalendarHead type='months' title={displayDays.month ? displayDays.month : ''}/>
-          <div className="day-name">
-            <div className="day-of-week"><h3>Sunday</h3></div>
-            <div className="day-of-week"><h3>Monday</h3></div>
-            <div className="day-of-week"><h3>Tuesday</h3></div>
-            <div className="day-of-week"><h3>Wednesday</h3></div>
-            <div className="day-of-week"><h3>Thursday</h3></div>
-            <div className="day-of-week"><h3>Friday</h3></div>
-            <div className="day-of-week"><h3>Saturday</h3></div>
-          </div>
-          <div className="month-body">
-            {dayNodes}
-          </div>
+      <main className="page-container"> 
+        <div className="page-header">
+          <Header family={family}/>
         </div>
+        <div className="page-body">
+          <div className="page-left">
+            <PageLeft />
+          </div>
+          <div className="page-right">
+            <div className="calendar-container">
+              <CalendarHead type='months' title={displayDays.month ? displayDays.month : ''}/>
+              <div className="day-name">
+                <div className="day-of-week"><h3>Sunday</h3></div>
+                <div className="day-of-week"><h3>Monday</h3></div>
+                <div className="day-of-week"><h3>Tuesday</h3></div>
+                <div className="day-of-week"><h3>Wednesday</h3></div>
+                <div className="day-of-week"><h3>Thursday</h3></div>
+                <div className="day-of-week"><h3>Friday</h3></div>
+                <div className="day-of-week"><h3>Saturday</h3></div>
+              </div>
+              <div className="calendar-body">
+                {dayNodes}
+              </div>
+            </div>
+          </div>
+        </div>  
       </main>
-      <footer className="footer">
-        <SignOut />
-      </footer>
     </div>
   );
 }

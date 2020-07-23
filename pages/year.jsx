@@ -7,6 +7,8 @@ import CalendarNodes from '../components/CalendarNodes';
 import SignOut from '../components/SignOut';
 import useUser from '../hooks/userHooks';
 import Link from 'next/link';
+import Header from '../components/Header';
+import PageLeft from '../components/PageLeft';
 
 export default function year() {
   const [yearTarget, setYearTarget] = useState('');
@@ -41,18 +43,23 @@ export default function year() {
         <title>Family Calendar: Year View</title>
       </Head>
       <main className="page-container">
-        <h1>The {family?.name} Family</h1>
-        <Link href="/admin"><a>Admin</a></Link>
-        <div className="month-container">
-          <CalendarHead type='years' title={displayMonths.year ? displayMonths.year : ''}/>
-          <div className="month-body">
-            {monthNodes}
+        <div className="page-header">
+          <Header family={family}/>
+        </div>
+        <div className="page-body">
+          <div className="page-left">
+            <PageLeft />
+          </div>
+          <div className="page-right">
+            <div className="calendar-container">
+              <CalendarHead type='years' title={displayMonths.year ? displayMonths.year : ''}/>
+              <div className="calendar-body">
+                {monthNodes}
+              </div>
+            </div>
           </div>
         </div>
       </main>
-      <footer className="footer">
-        <SignOut />
-      </footer>
     </div>
   );
 }

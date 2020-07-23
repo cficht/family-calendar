@@ -9,7 +9,7 @@ export default function AddMember() {
   return (
     <section className="add-member-box">
       <h2>Add Family Member:</h2> 
-      <form onSubmit={(e) => handleAddMember(e, memberName, memberColor)}>
+      <form onSubmit={(e) => handleAddMember(e, memberName, memberColor, setMemberColor)}>
         <label>Name:<input type="text" value={memberName} onChange={(e) => setMemberName(e.target.value)}/></label>
         <label>Color:<input type="color" value={memberColor} onChange={(e) => setMemberColor(e.target.value)}/></label>
         <button type="submit">Add</button>
