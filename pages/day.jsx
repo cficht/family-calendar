@@ -8,6 +8,7 @@ import SignOut from '../components/SignOut';
 import useUser from '../hooks/userHooks';
 import Header from '../components/Header';
 import PageLeft from '../components/PageLeft';
+import AddEvent from '../components/AddEvent';
 
 export default function day() {
   const [dayTarget, setDayTarget] = useState('');
@@ -41,6 +42,7 @@ export default function day() {
               <div className="day-body">
             Events
               </div>
+              <AddEvent />
             </div>
           </div>
         </div> 

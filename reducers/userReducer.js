@@ -2,7 +2,7 @@ import { SET_USER, SET_FAMILY, ADD_MEMBER, CHANGE_MEMBER, SUBTRACT_MEMBER } from
 
 const initialState = {
   user: '',
-  family: '',
+  family: {},
 };
 
 export default function reducer(state = initialState, action) {

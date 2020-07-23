@@ -12,7 +12,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: yellow;
 }
 
 .page-header {
@@ -20,11 +19,10 @@
   justify-content: center;
   width: 100%;
   padding: 10px;
-  background-color: pink;
 }
 
 .header {
-  width: 50%;
+  width: 100%;
   padding: 10px;
   text-align: center;
   font-size: 1.5em;
@@ -39,7 +37,6 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
-  background-color: green;
 }
 
 .page-left {
@@ -72,7 +69,6 @@
   justify-content: center;
   align-items: center;
   width: 85%;
-  background-color: red;
 }
 
 .main-body {
@@ -101,8 +97,7 @@
   flex-direction: column;
   align-items: center;
   width: 85%;
-  margin: 20px;
-  border: 2px solid black;
+  margin: 10px;
 }
 
 .calendar-head {
@@ -215,7 +210,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 50%;
+  width: 80%;
   margin: 20px;
   padding: 10px;
   border: 2px solid black;
@@ -320,4 +315,73 @@
   margin: 10px;
   background-color: whitesmoke;
   border: 2px solid black;
+}
+
+.member-display {
+  width: 90%;
+  padding: 10px;
+  margin: 20px;
+  border: 2px solid black;
+  border-radius: 20px;
+  text-align: center;
+  background-color: whitesmoke;
+}
+
+.member-display h5 {
+  margin-block-start: .5em;
+  margin-block-end: .5em;
+  padding: 5px;
+  background-color: whitesmoke;
+  border: 2px solid black;
+}
+
+
+.add-event-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  margin: 20px;
+  padding: 10px;
+  border: 2px solid black;
+  border-radius: 20px;
+  text-align: center;
+  background-color: whitesmoke;
+}
+
+.add-event-box label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.add-event-box input[type=text]{
+  margin: 5px;
+  width: 70%;
+}
+
+.add-event-box textarea{
+  margin: 5px;
+  width: 70%;
+}
+
+.add-event-box select{
+  margin: 5px;
+  width: 70%;
+}
+
+.add-event-box input[type=date]{
+  margin: 5px;
+  width: 50%;
+}
+
+.add-event-box input[type=time]{
+  margin: 5px;
+  width: 35%;
+}
+
+.add-event-box button {
+  margin: 10px;
+  width: 50%;
 }
