@@ -1,14 +1,15 @@
 import Head from 'next/head';
-import { API } from 'aws-amplify';
+// import { API } from 'aws-amplify';
 import { useState } from 'react';
 import Splash from '../components/Splash';
-import config from '../src/aws-exports';
+// import config from '../src/aws-exports';
 import SignUp from '../components/SignUp';
 import SignIn from '../components/SignIn';
 import SignOut from '../components/SignOut';
 import useUser from '../hooks/userHooks';
 
-API.configure(config);
+// API.configure(config);
+
 
 export default function Home() {
   const { user } = useUser();
