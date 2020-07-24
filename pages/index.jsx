@@ -2,7 +2,7 @@ import Head from 'next/head';
 import { API } from 'aws-amplify';
 import { useState } from 'react';
 import Splash from '../components/Splash';
-import config from './aws-exports';
+import config from '../src/aws-exports';
 import SignUp from '../components/SignUp';
 import SignIn from '../components/SignIn';
 import SignOut from '../components/SignOut';
