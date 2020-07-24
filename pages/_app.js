@@ -1,10 +1,10 @@
 import '../styles/index.css';
 import { Provider } from 'react-redux';
-// import Amplify from 'aws-amplify';
+import Amplify from 'aws-amplify';
 import store from '../store';
-// import awsconfig from '../src/aws-exports';
+import awsconfig from '../src/aws-exports';
 
-// Amplify.configure(awsconfig);
+Amplify.configure(awsconfig);
 
 /* eslint-disable */
 export default function MyApp({ Component, pageProps }) {
