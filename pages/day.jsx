@@ -77,7 +77,7 @@ export default function day() {
                   {eventNodes}
                 </ul>
               </div>
-              <AddEvent />
+              {members?.length > 0 ? <AddEvent /> : null}
             </div>
           </div>
         </div> 

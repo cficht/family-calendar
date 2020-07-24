@@ -18,7 +18,7 @@ export const addMember = (member) => dispatch => {
     .then(({ id, name, color, icon, familyID, createdAt, updatedAt }) => {
       dispatch({
         type: ADD_MEMBER,
-        payload: { id, name, color, icon, familyID, createdAt, updatedAt },
+        payload: { id, name, color, icon, familyID, createdAt, updatedAt, events: { items: [], nextToken: null } },
       });
     });
 };

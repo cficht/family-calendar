@@ -36,10 +36,10 @@ export default function admin() {
             </ul>
           </section>
         </div>
+        <footer className="footer">
+          <SignOut />
+        </footer>
       </main>
-      <footer className="footer">
-        <SignOut />
-      </footer>
     </div>
   );
 }
