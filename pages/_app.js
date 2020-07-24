@@ -2,7 +2,7 @@ import '../styles/index.css';
 import { Provider } from 'react-redux';
 import Amplify from 'aws-amplify';
 import store from '../store';
-import awsconfig from '../src/aws-exports';
+import awsconfig from './aws-exports';
 
 Amplify.configure(awsconfig);
 
