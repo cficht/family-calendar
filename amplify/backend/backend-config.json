@@ -18,7 +18,7 @@
 		}
 	},
 	"auth": {
-		"familycalendar1a471df3": {
+		"familycalendar529ab2c0": {
 			"service": "Cognito",
 			"providerPlugin": "awscloudformation",
 			"dependsOn": [],
@@ -30,7 +30,7 @@
 			"dependsOn": [
 				{
 					"category": "auth",
-					"resourceName": "familycalendar1a471df3",
+					"resourceName": "familycalendar529ab2c0",
 					"attributes": [
 						"UserPoolId",
 						"AppClientIDWeb",
@@ -38,12 +38,6 @@
 					]
 				}
 			]
-		},
-		"familycalendar529ab2c0": {
-			"service": "Cognito",
-			"providerPlugin": "awscloudformation",
-			"dependsOn": [],
-			"customAuth": false
 		}
 	}
 }

@@ -29,7 +29,6 @@ export async function signUp(e, userName, email, family, password) {
   }
 }
 
-
 export async function confirmSignUp(e, userName, confirmation) {
   e.preventDefault();
 
