@@ -22,12 +22,25 @@ export default function day() {
     if(targetDate) setDayTarget(moment(targetDate).format('dddd, MMMM Do YYYY'));
   }, [targetDate]);
 
-  const eventNodes = events?.filter(event => {
+  const eventNodes = events?.map(event => {
+    let inbetween;
+    if(moment(event.start).format('MMMM Do YYYY') !== moment(event.end).format('MMMM Do YYYY')) {
+      const start = moment(event.start);
+      const end = moment(event.end);
+      inbetween = end.diff(start, 'days');
+      const inbetweenDays = [...Array(Number(inbetween + 1))].map((_, i) => {
+        return { ...event, start: moment(event.start).add(i, 'days').format() };
+      });
+      return inbetweenDays;
+    } else return event;
+  })
+  .flat()
+  .filter(event => {
     let match = false;
     if(moment(event.start).format('dddd, MMMM Do YYYY') === moment(targetDate).format('dddd, MMMM Do YYYY')) match = true;
-    if(moment(event.end).format('dddd, MMMM Do YYYY') === moment(targetDate).format('dddd, MMMM Do YYYY')) match = true;
     return match;
-  }).map(event => {
+  })
+  .map(event => {
     const eventMember = members.find(member => member.id === event.memberID);
     return (
       <li key={event.id} style={{ backgroundColor: eventMember.color }} className="event-list-item">
