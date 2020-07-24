@@ -1,9 +1,6 @@
 import Router from 'next/router';
 import { Auth, API, graphqlOperation } from 'aws-amplify';
 import { createFamily } from '../../src/graphql/mutations';
-import config from '../../src/aws-exports';
-
-API.configure(config);
 
 export async function signUp(e, userName, email, family, password) {
   e.preventDefault();
