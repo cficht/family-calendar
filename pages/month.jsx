@@ -4,7 +4,6 @@ import moment from 'moment';
 import useCalendar from '../hooks/calendarHooks';
 import CalendarHead from '../components/CalendarHead';
 import CalendarNodes from '../components/CalendarNodes';
-import SignOut from '../components/SignOut';
 import useUser from '../hooks/userHooks';
 import PageLeft from '../components/PageLeft';
 import Header from '../components/Header';
@@ -13,7 +12,7 @@ export default function month() {
   const [monthTarget, setMonthTarget] = useState('');
   const [displayDays, setDisplayDays] = useState([]);
   const { targetDate } = useCalendar();
-  const { family, checkLog } = useUser();
+  const { family, members, events, checkLog } = useUser();
 
   useEffect(() => {
     checkLog();
@@ -39,7 +38,22 @@ export default function month() {
     });
   }, [monthTarget]);
 
-  const dayNodes = displayDays.days?.map(day => moment(day).month() === moment(monthTarget).month() ? <CalendarNodes className="calendar-node" key={day} node={day} type='/day' display='D'/> : <CalendarNodes className="other-day-node" key={day} node={day} type='/day' display='D'/>);
+  const eventNodes = events?.filter(event => {
+    let match = false;
+    if(moment(event.start).format('MM-YYYY') === moment(targetDate).format('MM-YYYY')) match = true;
+    if(moment(event.end).format('MM-YYYY') === moment(targetDate).format('MM-YYYY')) match = true;
+    return match;
+  }).map(event => event);
+
+  const dayNodes = displayDays.days?.map(day => {
+    const eventMatch = eventNodes?.filter(event => {
+      let match = false;
+      if(moment(event.start).format('MMMM Do YYYY') === moment(day).format('MMMM Do YYYY')) match = true;
+      if(moment(event.end).format('MMMM Do YYYY') === moment(day).format('MMMM Do YYYY')) match = true;
+      return match;
+    });
+    return moment(day).month() === moment(monthTarget).month() ? <CalendarNodes className="calendar-node" key={day} node={day} type='/day' display='D' events={eventMatch}/> : <CalendarNodes className="other-day-node" key={day} node={day} type='/day' display='D' events={eventMatch}/>;
+  });
 
   return (
     <div>

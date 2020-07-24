@@ -4,7 +4,7 @@ import useUser from '../hooks/userHooks';
 import moment from 'moment';
 
 export default function UpdateEvent({ event }) {
-  const { members, handleUpdateEvent } = useUser();
+  const { members, handleUpdateEvent, handleDeleteEvent } = useUser();
 
   const [eventName, setEventName] = useState('');
   const [eventDescription, setEventDescription] = useState('');
@@ -53,6 +53,7 @@ export default function UpdateEvent({ event }) {
           <input type="time" value={eventEndTime} onChange={(e) => setEventEndTime(e.target.value)}/>
         </label>
         <button type="submit">Update</button>
+        <button type="button" onClick={(e) => handleDeleteEvent(e, event.id, true)}>Delete</button>
       </form>
     </section>
   );

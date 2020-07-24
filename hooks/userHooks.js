@@ -87,8 +87,9 @@ const useUser = () => {
     dispatch(changeEvent(event));
   };
 
-  const handleDeleteEvent = (e, eventId) => {
+  const handleDeleteEvent = (e, eventId, redirect) => {
     e.preventDefault();
+    if(redirect) Router.push('/day')
     dispatch(subtractEvent(eventId));
   };
 

@@ -32,11 +32,11 @@ export default function day() {
     return (
       <li key={event.id} style={{ backgroundColor: eventMember.color }} className="event-list-item">
         <section className="event-list-detail">
-          <Link href={`/events/${event.id}`} as={`/events/${event.id}`}><h3>{event.name}</h3></Link>
           <h5>{eventMember.name}</h5>
           <p>{event.description}</p>
           <p>{event.start}</p>
           <p>{event.end}</p>
+          <Link href="/events/[id]" as={`/events/${event.id}`}><button>Update Event</button></Link>
           <button onClick={(e) => handleDeleteEvent(e, event.id)}>Delete Event</button>
         </section>
       </li>
