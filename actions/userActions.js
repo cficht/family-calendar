@@ -1,4 +1,4 @@
-import { postMember, patchMember, removeMember } from '../pages/api/family';
+import { postMember, patchMember, removeMember, postEvent, removeEvent, patchEvent } from '../pages/api/family';
 
 export const SET_USER = 'SET_USER';
 export const setUser = (user) => ({
@@ -41,6 +41,39 @@ export const subtractMember = (memberId) => dispatch => {
       dispatch({
         type: SUBTRACT_MEMBER,
         payload: { id, name, color, icon, familyID, createdAt, updatedAt },
+      });
+    });
+};
+
+export const ADD_EVENT = 'ADD_EVENT';
+export const addEvent = (event) => dispatch => {
+  return postEvent(event)
+    .then(({ id, name, description, start, end, memberID, createdAt, updatedAt }) => {
+      dispatch({
+        type: ADD_EVENT,
+        payload: { id, name, description, start, end, memberID, createdAt, updatedAt },
+      });
+    });
+};
+
+export const CHANGE_EVENT = 'CHANGE_EVENT';
+export const changeEvent = (event) => dispatch => {
+  return patchEvent(event)
+    .then(({ id, name, description, start, end, memberID, createdAt, updatedAt }) => {
+      dispatch({
+        type: CHANGE_EVENT,
+        payload: { id, name, description, start, end, memberID, createdAt, updatedAt },
+      });
+    });
+};
+
+export const SUBTRACT_EVENT = 'SUBTRACT_EVENT';
+export const subtractEvent = (eventId) => dispatch => {
+  return removeEvent(eventId)
+    .then(({ id, name, description, start, end, memberID, createdAt, updatedAt }) => {
+      dispatch({
+        type: SUBTRACT_EVENT,
+        payload: { id, name, description, start, end, memberID, createdAt, updatedAt },
       });
     });
 };

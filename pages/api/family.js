@@ -1,6 +1,6 @@
 import { API, graphqlOperation } from 'aws-amplify';
 import { getFamily, listFamilys } from '../../src/graphql/queries';
-import { createMember, updateMember, deleteMember } from '../../src/graphql/mutations';
+import { createMember, updateMember, deleteMember, createEvent, deleteEvent, updateEvent } from '../../src/graphql/mutations';
 
 export const getFamilyById = async(id) => {
   const family = await API.graphql(graphqlOperation(getFamily, { id }));
@@ -25,4 +25,19 @@ export const patchMember = async(member) => {
 export const removeMember = async(memberId) => {
   const deletedMember = await API.graphql(graphqlOperation(deleteMember, { input: { id: memberId } }));
   return deletedMember.data.deleteMember;
+};
+
+export const postEvent = async(event) => {
+  const newEvent = await API.graphql(graphqlOperation(createEvent, { input: event }));
+  return newEvent.data.createEvent;
+};
+
+export const patchEvent = async(event) => {
+  const updatedEvent = await API.graphql(graphqlOperation(updateEvent, { input: event }));
+  return updatedEvent.data.updateEvent;
+};
+
+export const removeEvent = async(eventId) => {
+  const newEvent = await API.graphql(graphqlOperation(deleteEvent, { input: { id: eventId } }));
+  return newEvent.data.deleteEvent;
 };

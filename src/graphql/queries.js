@@ -15,6 +15,19 @@ export const getFamily = /* GraphQL */ `
           familyID
           createdAt
           updatedAt
+          events {
+            items {
+              id
+              name
+              description
+              start
+              end
+              memberID
+              createdAt
+              updatedAt
+            }
+            nextToken
+          }
         }
         nextToken
       }
@@ -60,6 +73,19 @@ export const getMember = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      events {
+        items {
+          id
+          name
+          description
+          start
+          end
+          memberID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
       createdAt
       updatedAt
     }
@@ -81,6 +107,71 @@ export const listMembers = /* GraphQL */ `
         family {
           id
           name
+          createdAt
+          updatedAt
+        }
+        events {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const getEvent = /* GraphQL */ `
+  query GetEvent($id: ID!) {
+    getEvent(id: $id) {
+      id
+      name
+      description
+      start
+      end
+      memberID
+      member {
+        id
+        name
+        color
+        icon
+        familyID
+        family {
+          id
+          name
+          createdAt
+          updatedAt
+        }
+        events {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listEvents = /* GraphQL */ `
+  query ListEvents(
+    $filter: ModelEventFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listEvents(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        name
+        description
+        start
+        end
+        memberID
+        member {
+          id
+          name
+          color
+          icon
+          familyID
           createdAt
           updatedAt
         }

@@ -2,16 +2,18 @@ import { useEffect } from 'react';
 import { Auth } from 'aws-amplify';
 import { useDispatch, useSelector } from 'react-redux';
 import Router from 'next/router';
-import { setUser, setFamily, addMember, changeMember, subtractMember } from '../actions/userActions';
-import { selectUser, selectFamily, selectMembers } from '../selectors/userSelectors';
-import { getFamilyById } from '../pages/api/family';
 import { nanoid } from 'nanoid';
+import moment from 'moment';
+import { setUser, setFamily, addMember, changeMember, subtractMember, addEvent, subtractEvent, changeEvent } from '../actions/userActions';
+import { selectUser, selectFamily, selectMembers, selectEvents } from '../selectors/userSelectors';
+import { getFamilyById } from '../pages/api/family';
 
 const useUser = () => {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
   const family = useSelector(selectFamily);
   const members = useSelector(selectMembers);
+  const events = useSelector(selectEvents);
 
   useEffect(() => {
     if(!user) {
@@ -29,7 +31,7 @@ const useUser = () => {
       .catch(() => Router.push('/'));
   };
 
-  const handleAddMember = (e, memberName, memberColor) => {
+  const handleAddMember = (e, memberName, memberColor, setMemberName, setMemberColor) => {
     e.preventDefault();
     const memberId = nanoid();
     const member = {
@@ -39,6 +41,8 @@ const useUser = () => {
       familyID: family.id
     };
     dispatch(addMember(member));
+    setMemberName('');
+    setMemberColor(`#${Math.floor(Math.random() * 16777215).toString(16)}`);
   };
 
   const handleUpdateMember = (e, memberId, memberName, memberColor) => {
@@ -56,14 +60,51 @@ const useUser = () => {
     dispatch(subtractMember(memberId));
   };
 
+  const handleAddEvent = (e, eventName, eventDescription, eventStartDate, eventStartTime, eventEndDate, eventEndTime, eventMember) => {
+    e.preventDefault();
+    const eventId = nanoid();
+    const event = {
+      id: eventId,
+      name: eventName,
+      description: eventDescription,
+      start: (moment(`${eventStartDate}  ${eventStartTime}`, 'YYYY-MM-DD HH:mm').format()),
+      end: (moment(`${eventEndDate}  ${eventEndTime}`, 'YYYY-MM-DD HH:mm').format()),
+      memberID: eventMember
+    };
+    dispatch(addEvent(event));
+  };
+
+  const handleUpdateEvent = (e, eventId, eventName, eventDescription, eventStartDate, eventStartTime, eventEndDate, eventEndTime, eventMember) => {
+    e.preventDefault();
+    const event = {
+      id: eventId,
+      name: eventName,
+      description: eventDescription,
+      start: (moment(`${eventStartDate}  ${eventStartTime}`, 'YYYY-MM-DD HH:mm').format()),
+      end: (moment(`${eventEndDate}  ${eventEndTime}`, 'YYYY-MM-DD HH:mm').format()),
+      memberID: eventMember
+    };
+    dispatch(changeEvent(event));
+  };
+
+  const handleDeleteEvent = (e, eventId, redirect) => {
+    e.preventDefault();
+    if(redirect) Router.push('/day')
+    dispatch(subtractEvent(eventId));
+  };
+
   return {
     user,
     family,
     members,
+    events,
     checkLog,
     handleAddMember,
     handleUpdateMember,
-    handleDeleteMember
+    handleDeleteMember,
+    handleAddEvent,
+    handleUpdateEvent,
+    handleDeleteEvent
   };
 };
 
