@@ -1,4 +1,4 @@
-import { postMember, patchMember, removeMember, postEvent, removeEvent } from '../pages/api/family';
+import { postMember, patchMember, removeMember, postEvent, removeEvent, patchEvent } from '../pages/api/family';
 
 export const SET_USER = 'SET_USER';
 export const setUser = (user) => ({
@@ -51,6 +51,17 @@ export const addEvent = (event) => dispatch => {
     .then(({ id, name, description, start, end, memberID, createdAt, updatedAt }) => {
       dispatch({
         type: ADD_EVENT,
+        payload: { id, name, description, start, end, memberID, createdAt, updatedAt },
+      });
+    });
+};
+
+export const CHANGE_EVENT = 'CHANGE_EVENT';
+export const changeEvent = (event) => dispatch => {
+  return patchEvent(event)
+    .then(({ id, name, description, start, end, memberID, createdAt, updatedAt }) => {
+      dispatch({
+        type: CHANGE_EVENT,
         payload: { id, name, description, start, end, memberID, createdAt, updatedAt },
       });
     });

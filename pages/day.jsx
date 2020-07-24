@@ -7,6 +7,7 @@ import useUser from '../hooks/userHooks';
 import Header from '../components/Header';
 import PageLeft from '../components/PageLeft';
 import AddEvent from '../components/AddEvent';
+import Link from 'next/link';
 
 export default function day() {
   const [dayTarget, setDayTarget] = useState('');
@@ -31,7 +32,7 @@ export default function day() {
     return (
       <li key={event.id} style={{ backgroundColor: eventMember.color }} className="event-list-item">
         <section className="event-list-detail">
-          <h3>{event.name}</h3>
+          <Link href={`/events/${event.id}`} as={`/events/${event.id}`}><h3>{event.name}</h3></Link>
           <h5>{eventMember.name}</h5>
           <p>{event.description}</p>
           <p>{event.start}</p>

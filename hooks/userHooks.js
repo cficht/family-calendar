@@ -4,9 +4,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import Router from 'next/router';
 import { nanoid } from 'nanoid';
 import moment from 'moment';
-import { setUser, setFamily, addMember, changeMember, subtractMember, addEvent, subtractEvent } from '../actions/userActions';
+import { setUser, setFamily, addMember, changeMember, subtractMember, addEvent, subtractEvent, changeEvent } from '../actions/userActions';
 import { selectUser, selectFamily, selectMembers, selectEvents } from '../selectors/userSelectors';
-import { getFamilyById, postEvent } from '../pages/api/family';
+import { getFamilyById } from '../pages/api/family';
 
 const useUser = () => {
   const dispatch = useDispatch();
@@ -74,6 +74,19 @@ const useUser = () => {
     dispatch(addEvent(event));
   };
 
+  const handleUpdateEvent = (e, eventId, eventName, eventDescription, eventStartDate, eventStartTime, eventEndDate, eventEndTime, eventMember) => {
+    e.preventDefault();
+    const event = {
+      id: eventId,
+      name: eventName,
+      description: eventDescription,
+      start: (moment(`${eventStartDate}  ${eventStartTime}`, 'YYYY-MM-DD HH:mm').format()),
+      end: (moment(`${eventEndDate}  ${eventEndTime}`, 'YYYY-MM-DD HH:mm').format()),
+      memberID: eventMember
+    };
+    dispatch(changeEvent(event));
+  };
+
   const handleDeleteEvent = (e, eventId) => {
     e.preventDefault();
     dispatch(subtractEvent(eventId));
@@ -89,6 +102,7 @@ const useUser = () => {
     handleUpdateMember,
     handleDeleteMember,
     handleAddEvent,
+    handleUpdateEvent,
     handleDeleteEvent
   };
 };
