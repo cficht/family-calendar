@@ -36,7 +36,6 @@ export default function month() {
     });
   }, [monthTarget]);
 
-  console.log(events);
   const eventNodes = events?.filter(event => {
     if(events.length < 1) return;
     let match = false;

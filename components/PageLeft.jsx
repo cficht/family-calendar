@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import SignOut from './SignOut';
 import useUser from '../hooks/userHooks';
+import AddEvent from './AddEvent';
 
 export default function PageLeft() {
   const { members } = useUser();
@@ -22,6 +23,7 @@ export default function PageLeft() {
             </ul>
           </section>
         </li>
+        {members?.length > 0 ? <li><AddEvent /></li> : null}
         <li><SignOut /></li>
       </ul>
     </section>
