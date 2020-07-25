@@ -4,17 +4,6 @@ import moment from 'moment';
 import useUser from '../hooks/userHooks';
 import useCalendar from '../hooks/calendarHooks';
 import { customStyles } from '../utils/helpers';
-
-// const customStyles = {
-//   content : {
-//     top                   : '50%',
-//     left                  : '50%',
-//     right                 : 'auto',
-//     bottom                : 'auto',
-//     marginRight           : '-50%',
-//     transform             : 'translate(-50%, -50%)'
-//   }
-// };
  
 Modal.setAppElement('body');
 
@@ -54,11 +43,9 @@ export default function AddEvent() {
   const memberNodes = members?.map(member => <option value={member.id} key={member.id}>{member.name}</option>);
 
   return (
-    
     <section className="sign-out">
       <button onClick={openModal}>Add Event</button>
-      
-      <Modal isOpen={modalIsOpen} onRequestClose={closeModal} style={customStyles} contentLabel="Example Modal">
+      <Modal isOpen={modalIsOpen} onRequestClose={closeModal} style={customStyles} contentLabel="Add Event Modal">
         <section className="add-event-box">
           <h3>Add Event:</h3>
           <form onSubmit={e => {

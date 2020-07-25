@@ -1,4 +1,4 @@
-import { postMember, patchMember, removeMember, postEvent, removeEvent, patchEvent } from '../pages/api/family';
+import { postMember, patchMember, removeMember, postEvent, removeEvent, patchEvent, patchFamily } from '../pages/api/family';
 
 export const SET_USER = 'SET_USER';
 export const setUser = (user) => ({
@@ -11,6 +11,17 @@ export const setFamily = (family) => ({
   type: SET_FAMILY,
   payload: family,
 });
+
+export const CHANGE_FAMILY = 'CHANGE_FAMILY';
+export const changeFamily = (family) => dispatch => {
+  return patchFamily(family)
+    .then(({ id, name }) => {
+      dispatch({
+        type: CHANGE_FAMILY,
+        payload: { id, name },
+      });
+    });
+};
 
 export const ADD_MEMBER = 'ADD_MEMBER';
 export const addMember = (member) => dispatch => {
@@ -57,12 +68,12 @@ export const addEvent = (event) => dispatch => {
 };
 
 export const CHANGE_EVENT = 'CHANGE_EVENT';
-export const changeEvent = (event) => dispatch => {
+export const changeEvent = (event, oldMember) => dispatch => {
   return patchEvent(event)
     .then(({ id, name, description, start, end, memberID, createdAt, updatedAt }) => {
       dispatch({
         type: CHANGE_EVENT,
-        payload: { id, name, description, start, end, memberID, createdAt, updatedAt },
+        payload: { id, name, description, start, end, memberID, createdAt, updatedAt, oldMember },
       });
     });
 };

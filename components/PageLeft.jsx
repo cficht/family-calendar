@@ -3,6 +3,7 @@ import Link from 'next/link';
 import SignOut from './SignOut';
 import useUser from '../hooks/userHooks';
 import AddEvent from './AddEvent';
+import AdminButton from './AdminButton';
 
 export default function PageLeft() {
   const { members } = useUser();
@@ -14,7 +15,7 @@ export default function PageLeft() {
   return (
     <section className="left-container">
       <ul>
-        <li><Link href="/admin"><a>Admin</a></Link></li>
+        <li><AdminButton /></li>
         <li>
           <section className="member-display">
             <h3>Members:</h3>

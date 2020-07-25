@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import useUser from '../hooks/userHooks';
 import Head from 'next/head';
-import Link from 'next/link';
 import SignOut from '../components/SignOut';
 import AddMember from '../components/AddMember';
-import UpdateMemberNode from '../components/UpdateMemberNode';
+import UpdateMember from '../components/UpdateMember';
 import Header from '../components/Header';
+import UpdateFamily from '../components/UpdateFamily';
 
 export default function admin() {
   const { family, members, checkLog } = useUser();
@@ -15,7 +15,7 @@ export default function admin() {
   }, []);
 
   const memberNodes = members?.map(member => (
-    <UpdateMemberNode key={member.id} member={member}/>
+    <UpdateMember key={member.id} member={member}/>
   ));
   
   return (
@@ -28,6 +28,7 @@ export default function admin() {
           <Header family={family}/>
         </div>
         <div className="admin-container">
+          <UpdateFamily family={family}/>
           <AddMember />
           <section className="member-container">
             <h2>Update Members:</h2> 

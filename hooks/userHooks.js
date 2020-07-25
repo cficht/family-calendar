@@ -4,9 +4,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import Router from 'next/router';
 import { nanoid } from 'nanoid';
 import moment from 'moment';
-import { setUser, setFamily, addMember, changeMember, subtractMember, addEvent, subtractEvent, changeEvent } from '../actions/userActions';
+import { setUser, setFamily, addMember, changeMember, subtractMember, addEvent, subtractEvent, changeEvent, changeFamily } from '../actions/userActions';
 import { selectUser, selectFamily, selectMembers, selectEvents } from '../selectors/userSelectors';
-import { getFamilyById } from '../pages/api/family';
+import { getFamilyById, patchFamily } from '../pages/api/family';
 
 const useUser = () => {
   const dispatch = useDispatch();
@@ -29,6 +29,16 @@ const useUser = () => {
     Auth.currentAuthenticatedUser()
       .then((() => console.log('Logged in')))
       .catch(() => Router.push('/'));
+  };
+
+  const handleUpdateFamily = (e, familyId, familyName) => {
+    e.preventDefault();
+    console.log(familyName);
+    const family = {
+      id: familyId,
+      name: familyName
+    };
+    dispatch(changeFamily(family));
   };
 
   const handleAddMember = (e, memberName, memberColor, setMemberName, setMemberColor) => {
@@ -74,7 +84,7 @@ const useUser = () => {
     dispatch(addEvent(event));
   };
 
-  const handleUpdateEvent = (e, eventId, eventName, eventDescription, eventStartDate, eventStartTime, eventEndDate, eventEndTime, eventMember) => {
+  const handleUpdateEvent = (e, eventId, eventName, eventDescription, eventStartDate, eventStartTime, eventEndDate, eventEndTime, eventMember, oldMember) => {
     e.preventDefault();
     const event = {
       id: eventId,
@@ -84,7 +94,7 @@ const useUser = () => {
       end: (moment(`${eventEndDate}  ${eventEndTime}`, 'YYYY-MM-DD HH:mm').format()),
       memberID: eventMember
     };
-    dispatch(changeEvent(event));
+    dispatch(changeEvent(event, oldMember));
   };
 
   const handleDeleteEvent = (e, eventId, redirect) => {
@@ -99,6 +109,7 @@ const useUser = () => {
     members,
     events,
     checkLog,
+    handleUpdateFamily,
     handleAddMember,
     handleUpdateMember,
     handleDeleteMember,
