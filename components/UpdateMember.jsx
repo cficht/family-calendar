@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import useUser from '../hooks/userHooks';
 
-export default function UpdateMemberNode({ member }) {
+export default function UpdateMember({ member }) {
   const { handleUpdateMember, handleDeleteMember } = useUser();
   const [memberName, setMemberName] = useState(member.name);
   const [memberColor, setMemberColor] = useState(member.color);
@@ -20,6 +20,6 @@ export default function UpdateMemberNode({ member }) {
   );
 }
 
-UpdateMemberNode.propTypes = {
+UpdateMember.propTypes = {
   member: PropTypes.object
 };

@@ -1,9 +1,6 @@
 import Router from 'next/router';
 import { Auth, API, graphqlOperation } from 'aws-amplify';
 import { createFamily } from '../../src/graphql/mutations';
-import config from '../../src/aws-exports';
-
-API.configure(config);
 
 export async function signUp(e, userName, email, family, password) {
   e.preventDefault();
@@ -37,7 +34,7 @@ export async function confirmSignUp(e, userName, confirmation) {
 
   try {
     await Auth.confirmSignUp(userName, confirmation);
-    Router.push('/');
+    Router.push('/login');
   } catch(error) {
     console.log('error confirming sign up', error);
   }
@@ -47,18 +44,16 @@ export async function signIn(e, userName, password) {
   e.preventDefault();
   try {
     await Auth.signIn(userName, password);
-
-    Router.push('/month');
+    Router.push('/');
   } catch(error) {
     console.log('error signing in', error);
   }
 }
 
-export async function signOut(e) {
-  e.preventDefault();
+export async function signOut() {
   try {
     await Auth.signOut();
-    Router.reload();
+    Router.push('/login');
   } catch(error) {
     console.log('error signing out: ', error);
   }
