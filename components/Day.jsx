@@ -1,21 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import Head from 'next/head';
 import moment from 'moment';
 import useCalendar from '../hooks/calendarHooks';
-import CalendarHead from '../components/CalendarHead';
 import useUser from '../hooks/userHooks';
-import Header from '../components/Header';
-import PageLeft from '../components/PageLeft';
+import CalendarHead from '../components/CalendarHead';
 import UpdateEvent from '../components/UpdateEvent';
 
-export default function day() {
+export default function Day() {
   const [dayTarget, setDayTarget] = useState('');
   const { targetDate } = useCalendar();
-  const { family, members, events, checkLog, handleDeleteEvent } = useUser();
-
-  useEffect(() => {
-    checkLog();
-  }, []);
+  const { members, events, handleDeleteEvent } = useUser();
 
   useEffect(() => {
     if(targetDate) setDayTarget(moment(targetDate).format('dddd, MMMM Do YYYY'));
@@ -56,30 +49,13 @@ export default function day() {
   });
 
   return (
-    <div>
-      <Head>
-        <title>Family Calendar: Day View</title>
-      </Head>
-      <main className="page-container">
-        <div className="page-header">
-          <Header family={family}/>
-        </div>
-        <div className="page-body">
-          <div className="page-left">
-            <PageLeft />
-          </div>
-          <div className="page-right">
-            <div className="calendar-container">
-              <CalendarHead type="days" title={dayTarget} />
-              <div className="day-body">
-                <ul className="event-list">
-                  {eventNodes}
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div> 
-      </main>
-    </div>
+    <>
+      <CalendarHead type="days" title={dayTarget} />
+      <div className="day-body">
+        <ul className="event-list">
+          {eventNodes}
+        </ul>
+      </div>
+    </>
   );
 }

@@ -7,6 +7,7 @@ import moment from 'moment';
 import { setUser, setFamily, addMember, changeMember, subtractMember, addEvent, subtractEvent, changeEvent, changeFamily } from '../actions/userActions';
 import { selectUser, selectFamily, selectMembers, selectEvents } from '../selectors/userSelectors';
 import { getFamilyById, patchFamily } from '../pages/api/family';
+import { signOut } from '../pages/api/auth';
 
 const useUser = () => {
   const dispatch = useDispatch();
@@ -28,8 +29,14 @@ const useUser = () => {
   const checkLog = () => {
     Auth.currentAuthenticatedUser()
       .then((() => console.log('Logged in')))
-      .catch(() => Router.push('/'));
+      .catch(() => Router.push('/login'));
   };
+
+  const handleSignOut = (e) => {
+    e.preventDefault();
+    dispatch(setUser(''))
+    signOut();
+  }
 
   const handleUpdateFamily = (e, familyId, familyName) => {
     e.preventDefault();
@@ -97,9 +104,8 @@ const useUser = () => {
     dispatch(changeEvent(event, oldMember));
   };
 
-  const handleDeleteEvent = (e, eventId, redirect) => {
+  const handleDeleteEvent = (e, eventId) => {
     e.preventDefault();
-    if(redirect) Router.push('/day')
     dispatch(subtractEvent(eventId));
   };
 
@@ -109,6 +115,7 @@ const useUser = () => {
     members,
     events,
     checkLog,
+    handleSignOut,
     handleUpdateFamily,
     handleAddMember,
     handleUpdateMember,

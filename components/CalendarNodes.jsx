@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
-import Link from 'next/link';
 import useCalendar from '../hooks/calendarHooks';
 import useUser from '../hooks/userHooks';
 
@@ -18,9 +17,7 @@ export default function CalendarNodes({ className, node, type, display, events }
 
   return (
     <div className={className}>
-      <Link href={type} as={type}>
-        <a onClick={() => handleTargetChange(moment(node).format())}><h3>{moment(node).format(display)}</h3></a>
-      </Link>
+      <a onClick={() => handleTargetChange(moment(node).format(), type)}><h3>{moment(node).format(display)}</h3></a>
       <ul className="month-event-list">
         {eventNodes}
       </ul>
