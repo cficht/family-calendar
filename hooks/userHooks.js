@@ -6,7 +6,7 @@ import { nanoid } from 'nanoid';
 import moment from 'moment';
 import { setUser, setFamily, addMember, changeMember, subtractMember, addEvent, subtractEvent, changeEvent, changeFamily } from '../actions/userActions';
 import { selectUser, selectFamily, selectMembers, selectEvents } from '../selectors/userSelectors';
-import { getFamilyById, patchFamily } from '../pages/api/family';
+import { getFamilyById, patchFamily, removeMemberEvents, removeEvent } from '../pages/api/family';
 import { signOut } from '../pages/api/auth';
 
 const useUser = () => {
@@ -74,6 +74,10 @@ const useUser = () => {
 
   const handleDeleteMember = (e, memberId) => {
     e.preventDefault();
+    const memberEvents = events.filter(event => event.memberID === memberId)
+    memberEvents.forEach(event => {
+      removeEvent(event.id);
+    })
     dispatch(subtractMember(memberId));
   };
 
