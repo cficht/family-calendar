@@ -3,6 +3,7 @@ import { API } from 'aws-amplify';
 import config from '../src/aws-exports';
 import Router from 'next/router';
 import Head from 'next/head';
+import { ToastContainer, Slide } from 'react-toastify';
 import useUser from '../hooks/userHooks';
 import SignUp from '../components/SignUp';
 import SignIn from '../components/SignIn';
@@ -32,6 +33,19 @@ export default function Home() {
         {user ? redirectLogged() : renderLogType()}
         {user ? null : <button type="button" onClick={() => setLogType(logType + 1)} disabled={logType === 1}>&rarr;</button>}
       </main>
+      <ToastContainer 
+        position="bottom-center"
+        transition={Slide}
+        autoClose={2000}
+        hideProgressBar
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        style={{ textAlign: 'center' }}
+      />
     </div>
   );
 }

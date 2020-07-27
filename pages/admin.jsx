@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import useUser from '../hooks/userHooks';
 import Head from 'next/head';
+import { ToastContainer, Slide } from 'react-toastify';
 import SignOut from '../components/SignOut';
 import AddMember from '../components/AddMember';
 import UpdateMember from '../components/UpdateMember';
 import Header from '../components/Header';
 import UpdateFamily from '../components/UpdateFamily';
+
 
 export default function admin() {
   const { user, family, members, checkLog } = useUser();
@@ -48,6 +50,19 @@ export default function admin() {
               <SignOut />
             </footer>
           </main>
+          <ToastContainer 
+            position="bottom-center"
+            transition={Slide}
+            autoClose={2000}
+            hideProgressBar
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            style={{ textAlign: 'center' }}
+          />
         </>
       }
     </div>

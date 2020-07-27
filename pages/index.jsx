@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
+import { ToastContainer, Slide } from 'react-toastify';
 import useCalendar from '../hooks/calendarHooks';
 import useUser from '../hooks/userHooks';
 import Header from '../components/Header';
@@ -49,6 +50,19 @@ export default function calendar() {
               </div>
             </div>  
           </main>
+          <ToastContainer 
+            position="bottom-center"
+            transition={Slide}
+            autoClose={2000}
+            hideProgressBar
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            style={{ textAlign: 'center' }}
+          />
         </>
       }
     </div>

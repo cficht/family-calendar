@@ -424,5 +424,8 @@
 }
 
 .notification {
-  background-color: whitesmoke;
+  position: absolute;
+  width: 20%;
+  margin: 0 auto;
+  text-align: center;
 }

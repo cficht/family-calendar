@@ -4,10 +4,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import Router from 'next/router';
 import { nanoid } from 'nanoid';
 import moment from 'moment';
-import Notification from 'rc-notification';
+import { toast } from 'react-toastify';
 import { setUser, setFamily, addMember, changeMember, subtractMember, addEvent, subtractEvent, changeEvent, changeFamily } from '../actions/userActions';
 import { selectUser, selectFamily, selectMembers, selectEvents } from '../selectors/userSelectors';
-import { getFamilyById, patchFamily, removeMemberEvents, removeEvent } from '../pages/api/family';
+import { getFamilyById, removeEvent } from '../pages/api/family';
 import { signOut } from '../pages/api/auth';
 
 const useUser = () => {
@@ -16,11 +16,6 @@ const useUser = () => {
   const family = useSelector(selectFamily);
   const members = useSelector(selectMembers);
   const events = useSelector(selectEvents);
-  const [notification, setNotification] = useState(null);
-
-  useEffect(() => {
-    Notification.newInstance({ prefixCls: 'notification' }, (n) => setNotification(n));
-  }, []);
 
   useEffect(() => {
     if(!user) {
@@ -46,7 +41,7 @@ const useUser = () => {
 
   const handleUpdateFamily = (e, familyId, familyName) => {
     e.preventDefault();
-    if(familyName.length < 1) throw new Error('Family must have a name!'); // REUSE???
+    if(familyName.length < 1) throw new Error('Family must have a name'); // REUSE???
     const family = {
       id: familyId,
       name: familyName
@@ -56,7 +51,7 @@ const useUser = () => {
 
   const handleAddMember = (e, memberName, memberColor, setMemberName, setMemberColor) => {
     e.preventDefault();
-    if(memberName.length < 1) throw new Error('Member must have a name!'); // REUSE???
+    if(memberName.length < 1) throw new Error('Member must have a name'); // REUSE???
     const memberId = nanoid();
     const member = {
       id: memberId,
@@ -71,7 +66,7 @@ const useUser = () => {
 
   const handleUpdateMember = (e, memberId, memberName, memberColor) => {
     e.preventDefault();
-    if(memberName.length < 1) throw new Error('Member must have a name!'); // REUSE???
+    if(memberName.length < 1) throw new Error('Member must have a name'); // REUSE???
     const member = {
       id: memberId,
       name: memberName,
@@ -91,10 +86,10 @@ const useUser = () => {
 
   const handleAddEvent = (e, eventName, eventDescription, eventStartDate, eventStartTime, eventEndDate, eventEndTime, eventMember) => {
     e.preventDefault();
-    if(eventName.length < 1) throw new Error('Event must have a name!'); // REUSE???
+    if(eventName.length < 1) throw new Error('Event must have a name'); // REUSE???
     const eventStart = moment(`${eventStartDate}  ${eventStartTime}`, 'YYYY-MM-DD HH:mm').format();
     const eventEnd = moment(`${eventEndDate}  ${eventEndTime}`, 'YYYY-MM-DD HH:mm').format();
-    if(moment(eventStart).valueOf() >= moment(eventEnd).valueOf()) throw new Error('End date must be after start date!')
+    if(moment(eventStart).valueOf() >= moment(eventEnd).valueOf()) throw new Error('End date must be after start date')
     const eventId = nanoid();
     const event = {
       id: eventId,
@@ -109,10 +104,10 @@ const useUser = () => {
 
   const handleUpdateEvent = (e, eventId, eventName, eventDescription, eventStartDate, eventStartTime, eventEndDate, eventEndTime, eventMember, oldMember) => {
     e.preventDefault();
-    if(eventName.length < 1) throw new Error('Event must have a name!'); // REUSE???
+    if(eventName.length < 1) throw new Error('Event must have a name'); // REUSE???
     const eventStart = moment(`${eventStartDate}  ${eventStartTime}`, 'YYYY-MM-DD HH:mm').format();
     const eventEnd = moment(`${eventEndDate}  ${eventEndTime}`, 'YYYY-MM-DD HH:mm').format();
-    if(moment(eventStart).valueOf() >= moment(eventEnd).valueOf()) throw new Error('End date must be after start date!')
+    if(moment(eventStart).valueOf() >= moment(eventEnd).valueOf()) throw new Error('End date must be after start date')
     const event = {
       id: eventId,
       name: eventName,
@@ -129,18 +124,21 @@ const useUser = () => {
     dispatch(subtractEvent(eventId));
   };
 
-  function handleNotification(error) {
-    notification.notice({
-      content: <span>{error.message}</span>,
+  const handleNotification = (error) => toast.error(error.message, {
+    position: "bottom-center",
+    autoClose: 1500,
+    hideProgressBar: true,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
     });
-  }
 
   return {
     user,
     family,
     members,
     events,
-    notification,
     checkLog,
     handleSignOut,
     handleUpdateFamily,
@@ -150,7 +148,7 @@ const useUser = () => {
     handleAddEvent,
     handleUpdateEvent,
     handleDeleteEvent,
-    handleNotification
+    handleNotification,
   };
 };
 
