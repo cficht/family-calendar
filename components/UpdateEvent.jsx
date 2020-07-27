@@ -8,7 +8,7 @@ import { customStyles } from '../utils/helpers';
 Modal.setAppElement('body');
 
 export default function UpdateEvent({ event }) {
-  const { members, handleUpdateEvent, handleDeleteEvent } = useUser();
+  const { members, handleUpdateEvent, handleDeleteEvent, handleNotification } = useUser();
 
   const [modalIsOpen, setIsOpen] = useState(false);
   const [eventName, setEventName] = useState('');
@@ -48,8 +48,12 @@ export default function UpdateEvent({ event }) {
         <section className="add-event-box">
           <h3>Update Event:</h3>
           <form onSubmit={e => {
-            handleUpdateEvent(e, event.id, eventName, eventDescription, eventStartDate, eventStartTime, eventEndDate, eventEndTime, eventMember, event.memberID);
-            closeModal();
+            try {
+              handleUpdateEvent(e, event.id, eventName, eventDescription, eventStartDate, eventStartTime, eventEndDate, eventEndTime, eventMember, event.memberID);
+              closeModal();
+            } catch(error) {
+              handleNotification(error);
+            }
           }}>
             <label>Name:<input type="text" value={eventName} onChange={(e) => setEventName(e.target.value)}/></label>
             <label>Description:<textarea value={eventDescription} onChange={(e) => setEventDescription(e.target.value)}/></label>
