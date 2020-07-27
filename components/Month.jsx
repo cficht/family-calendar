@@ -31,9 +31,14 @@ export default function Month() {
 
   const eventNodes = events?.filter(event => {
     if(events.length < 1) return;
+    if(!event) return;
     let match = false;
     if(moment(event.start).format('MM-YYYY') === moment(targetDate).format('MM-YYYY')) match = true;
     if(moment(event.end).format('MM-YYYY') === moment(targetDate).format('MM-YYYY')) match = true;
+    if(moment(event.start).format('MM-YYYY') === moment(targetDate).subtract(1, 'months').format('MM-YYYY')) match = true;
+    if(moment(event.end).format('MM-YYYY') === moment(targetDate).subtract(1, 'months').format('MM-YYYY')) match = true;
+    if(moment(event.start).format('MM-YYYY') === moment(targetDate).add(1, 'months').format('MM-YYYY')) match = true;
+    if(moment(event.end).format('MM-YYYY') === moment(targetDate).add(1, 'months').format('MM-YYYY')) match = true;
     return match;
   })
   .map(event => {

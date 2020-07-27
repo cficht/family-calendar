@@ -422,3 +422,10 @@
   margin-block-end: 0em;
   background-color: whitesmoke;
 }
+
+.notification {
+  position: absolute;
+  width: 20%;
+  margin: 0 auto;
+  text-align: center;
+}

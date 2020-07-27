@@ -5,6 +5,8 @@ import { createFamily } from '../../src/graphql/mutations';
 export async function signUp(e, userName, email, family, password) {
   e.preventDefault();
   try {
+    if(email.length < 1) throw new Error('User must have an email address!');
+    if(family.length < 1) throw new Error('User must provide a family name!');
     const user = await Auth.signUp({
       username: userName,
       password,
@@ -25,7 +27,7 @@ export async function signUp(e, userName, email, family, password) {
 
     Router.push('/confirmation');
   } catch(error) {
-    console.log('error signing up:', error);
+    throw new Error(error.message);
   }
 }
 
@@ -36,7 +38,7 @@ export async function confirmSignUp(e, userName, confirmation) {
     await Auth.confirmSignUp(userName, confirmation);
     Router.push('/login');
   } catch(error) {
-    console.log('error confirming sign up', error);
+    throw new Error(error.message); 
   }
 }
 
@@ -46,7 +48,8 @@ export async function signIn(e, userName, password) {
     await Auth.signIn(userName, password);
     Router.push('/');
   } catch(error) {
-    console.log('error signing in', error);
+    if(password.length < 1) throw new Error('Password cannot be empty');
+    throw new Error(error.message); 
   }
 }
 
@@ -55,6 +58,6 @@ export async function signOut() {
     await Auth.signOut();
     Router.push('/login');
   } catch(error) {
-    console.log('error signing out: ', error);
+    throw new Error(error.message); 
   }
 }
