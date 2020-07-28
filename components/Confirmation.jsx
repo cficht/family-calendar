@@ -3,9 +3,9 @@ import { confirmSignUp } from '../pages/api/auth';
 import useUser from '../hooks/userHooks';
 
 export default function Confirmation() {
-  const { handleNotification } = useUser();
   const [userName, setUserName] = useState('');
   const [confirmation, setConfirmation] = useState('');
+  const { handleNotification } = useUser();
 
   return (
     <section className="auth-box">

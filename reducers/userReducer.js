@@ -18,8 +18,8 @@ export default function reducer(state = initialState, action) {
     case CHANGE_MEMBER:
       return { ...state, 
         family: { ...state.family, members: 
-          { ...state.family.members, items: 
-            state.family.members.items.map(item => {
+          { ...state.family.members, 
+            items: state.family.members.items.map(item => {
               if(action.payload.id === item.id) return action.payload;
               return item;
             }) 
@@ -29,57 +29,59 @@ export default function reducer(state = initialState, action) {
     case SUBTRACT_MEMBER:
       return { ...state, 
         family: { ...state.family, members: 
-            { ...state.family.members, items: state.family.members.items.filter(item => action.payload.id !== item.id) } 
+          { ...state.family.members, 
+            items: state.family.members.items.filter(item => action.payload.id !== item.id) 
+          } 
         } 
       };
     case ADD_EVENT:
       return { ...state, 
         family: { ...state.family, members: 
-          { ...state.family.members, items: 
-          state.family.members.items.map(item => {
-            if(action.payload.memberID === item.id) {
-              item.events.items = [...item.events.items, action.payload];
-            }
-            return item;
-          })  
+          { ...state.family.members, 
+            items: state.family.members.items.map(item => {
+              if(action.payload.memberID === item.id) {
+                item.events.items = [...item.events.items, action.payload];
+              }
+              return item;
+            })  
           } 
         } 
       };
     case CHANGE_EVENT:
       return { ...state, 
         family: { ...state.family, members: 
-            { ...state.family.members, items: 
-            state.family.members.items.map(item => {
-              if(action.payload.memberID === item.id) {
-                if(!(item.events.items.find(event => action.payload.id === event.id))) {
-                  state.family.members.items.map(item => {
-                    if(action.payload.oldMember === item.id) {
-                      item.events.items = item.events.items.filter(event => action.payload.id !== event.id);
-                    }
-                    return item;
+            { ...state.family.members, 
+              items: state.family.members.items.map(item => {
+                if(action.payload.memberID === item.id) {
+                  if(!(item.events.items.find(event => action.payload.id === event.id))) {
+                    state.family.members.items.map(item => {
+                      if(action.payload.oldMember === item.id) {
+                        item.events.items = item.events.items.filter(event => action.payload.id !== event.id);
+                      }
+                      return item;
+                    }); 
+                    item.events.items = [...item.events.items, action.payload];
+                  }
+                  else item.events.items = item.events.items.map(event => {
+                    if(action.payload.id === event.id) return action.payload;
+                    return event;
                   }); 
-                  item.events.items = [...item.events.items, action.payload];
                 }
-                else item.events.items = item.events.items.map(event => {
-                  if(action.payload.id === event.id) return action.payload;
-                  return event;
-                }); 
-              }
-              return item;
-            })  
+                return item;
+              })  
             } 
         } 
       };
     case SUBTRACT_EVENT:
       return { ...state, 
         family: { ...state.family, members: 
-            { ...state.family.members, items: 
-            state.family.members.items.map(item => {
-              if(action.payload.memberID === item.id) {
-                item.events.items = item.events.items.filter(event => action.payload.id !== event.id);
-              }
-              return item;
-            })  
+            { ...state.family.members, 
+              items: state.family.members.items.map(item => {
+                if(action.payload.memberID === item.id) {
+                  item.events.items = item.events.items.filter(event => action.payload.id !== event.id);
+                }
+                return item;
+              })  
             } 
         } 
       };

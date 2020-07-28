@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { Auth } from 'aws-amplify';
 import { useDispatch, useSelector } from 'react-redux';
 import Router from 'next/router';
@@ -84,37 +84,37 @@ const useUser = () => {
     dispatch(subtractMember(memberId));
   };
 
-  const handleAddEvent = (e, eventName, eventDescription, eventStartDate, eventStartTime, eventEndDate, eventEndTime, eventMember) => {
+  const handleAddEvent = (e, { name, description, startDate, startTime, endDate, endTime, memberID }) => {
     e.preventDefault();
-    if(eventName.length < 1) throw new Error('Event must have a name'); // REUSE???
-    const eventStart = moment(`${eventStartDate}  ${eventStartTime}`, 'YYYY-MM-DD HH:mm').format();
-    const eventEnd = moment(`${eventEndDate}  ${eventEndTime}`, 'YYYY-MM-DD HH:mm').format();
+    if(name.length < 1) throw new Error('Event must have a name'); // REUSE???
+    const eventStart = moment(`${startDate}  ${startTime}`, 'YYYY-MM-DD HH:mm').format();
+    const eventEnd = moment(`${endDate}  ${endTime}`, 'YYYY-MM-DD HH:mm').format();
     if(moment(eventStart).valueOf() >= moment(eventEnd).valueOf()) throw new Error('End date must be after start date')
     const eventId = nanoid();
     const event = {
       id: eventId,
-      name: eventName,
-      description: eventDescription,
+      name: name,
+      description: description,
       start: eventStart,
       end: eventEnd,
-      memberID: eventMember
+      memberID: memberID
     };
     dispatch(addEvent(event));
   };
 
-  const handleUpdateEvent = (e, eventId, eventName, eventDescription, eventStartDate, eventStartTime, eventEndDate, eventEndTime, eventMember, oldMember) => {
+  const handleUpdateEvent = (e, eventId, oldMember, { name, description, startDate, startTime, endDate, endTime, memberID}) => {
     e.preventDefault();
-    if(eventName.length < 1) throw new Error('Event must have a name'); // REUSE???
-    const eventStart = moment(`${eventStartDate}  ${eventStartTime}`, 'YYYY-MM-DD HH:mm').format();
-    const eventEnd = moment(`${eventEndDate}  ${eventEndTime}`, 'YYYY-MM-DD HH:mm').format();
+    if(name.length < 1) throw new Error('Event must have a name'); // REUSE???
+    const eventStart = moment(`${startDate}  ${startTime}`, 'YYYY-MM-DD HH:mm').format();
+    const eventEnd = moment(`${endDate}  ${endTime}`, 'YYYY-MM-DD HH:mm').format();
     if(moment(eventStart).valueOf() >= moment(eventEnd).valueOf()) throw new Error('End date must be after start date')
     const event = {
       id: eventId,
-      name: eventName,
-      description: eventDescription,
-      start: (moment(`${eventStartDate}  ${eventStartTime}`, 'YYYY-MM-DD HH:mm').format()),
-      end: (moment(`${eventEndDate}  ${eventEndTime}`, 'YYYY-MM-DD HH:mm').format()),
-      memberID: eventMember
+      name: name,
+      description: description,
+      start: (moment(`${startDate}  ${startTime}`, 'YYYY-MM-DD HH:mm').format()),
+      end: (moment(`${endDate}  ${endTime}`, 'YYYY-MM-DD HH:mm').format()),
+      memberID: memberID
     };
     dispatch(changeEvent(event, oldMember));
   };

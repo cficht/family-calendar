@@ -7,6 +7,7 @@ import useUser from '../hooks/userHooks';
 export default function CalendarNodes({ className, node, type, display, events }) {
   const { handleTargetChange } = useCalendar();
   const { members } = useUser();
+  
   const eventNodes = events?.map(event => { 
     const eventMember = members.find(member => member.id === event.memberID);
     return (
@@ -18,7 +19,7 @@ export default function CalendarNodes({ className, node, type, display, events }
   return (
     <div className={className}>
       <a onClick={() => handleTargetChange(moment(node).format(), type)}><h3>{moment(node).format(display)}</h3></a>
-      <ul className="month-event-list">
+      <ul className="event-list">
         {eventNodes}
       </ul>
     </div>

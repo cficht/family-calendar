@@ -7,11 +7,11 @@ export default function CalendarHead({ type, title }) {
   const { targetDate, handleTargetChange } = useCalendar();
 
   return (
-    <div className="calendar-head">
+    <section className="calendar-head">
       {type === 'none' ? null : <button onClick={() => handleTargetChange(moment(targetDate).subtract(1, type).format())}>Previous</button>}
       <h3>{title}</h3>
       {type === 'none' ? null : <button onClick={() => handleTargetChange(moment(targetDate).add(1, type).format())}>Next</button>}
-    </div>
+    </section>
   );
 }
 
@@ -19,4 +19,3 @@ CalendarHead.propTypes = {
   type: PropTypes.string,
   title: PropTypes.string
 };
-

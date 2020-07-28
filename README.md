@@ -1,5 +1,6 @@
 # Family Calendar
 Author: [Chris Ficht](http://github.com/cficht)
+
 Deployment coming soon!
 
 ## Overview
@@ -9,12 +10,15 @@ Calendar application to help families manage their day-to-day lives. Created usi
 * React
 * Next.js
 * Redux
+* Redux Thunk
 * AWS Amplify
 * AWS Cognito
 * AWS DynamoDB
 * GraphQL
 * Moment.js
 * React-Toastify
+* react-modal
+* Nano ID
 
 ## Future Features
 * Reset password page
