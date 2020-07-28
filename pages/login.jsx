@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { API } from 'aws-amplify';
 import config from '../src/aws-exports';
 import Router from 'next/router';
@@ -7,13 +7,12 @@ import { ToastContainer, Slide } from 'react-toastify';
 import useUser from '../hooks/userHooks';
 import SignUp from '../components/SignUp';
 import SignIn from '../components/SignIn';
-
 API.configure(config);
 
 export default function Home() {
-  const { user } = useUser();
   const [logType, setLogType] = useState(0);
-
+  const { user } = useUser();
+  
   const renderLogType = () => {
     if(logType === 0) return <SignIn />;
     if(logType === 1) return <SignUp />;
@@ -24,7 +23,7 @@ export default function Home() {
   };
 
   return (
-    <div className="container">
+    <div>
       <Head>
         <title>Family Calendar</title>
       </Head>

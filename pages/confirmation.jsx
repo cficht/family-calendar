@@ -5,7 +5,7 @@ import Confirmation from '../components/Confirmation';
 
 export default function confirmation() {
   return (
-    <div className="container">
+    <div>
       <Head>
         <title>Family Calendar: Confirmation</title>
       </Head>

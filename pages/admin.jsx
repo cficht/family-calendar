@@ -8,7 +8,6 @@ import UpdateMember from '../components/UpdateMember';
 import Header from '../components/Header';
 import UpdateFamily from '../components/UpdateFamily';
 
-
 export default function admin() {
   const { user, family, members, checkLog } = useUser();
   const [loading, setLoading] = useState(true);
@@ -36,7 +35,7 @@ export default function admin() {
             <div className="page-header">
               <Header family={family} page={'Admin'}/>
             </div>
-            <div className="admin-container">
+            <div className="calendar-container">
               <UpdateFamily family={family}/>
               <AddMember />
               <section className="member-container">

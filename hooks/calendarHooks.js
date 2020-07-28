@@ -19,7 +19,7 @@ const useCalendar = () => {
 
   const handleViewChange = (newView) => {
     dispatch(setView(newView));
-  }
+  };
 
   return {
     targetDate,

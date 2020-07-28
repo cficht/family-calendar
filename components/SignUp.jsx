@@ -3,11 +3,11 @@ import { signUp } from '../pages/api/auth';
 import useUser from '../hooks/userHooks';
 
 export default function SignUp() {
-  const { handleNotification } = useUser();
   const [userName, setUserName] = useState('');
   const [email, setEmail] = useState('');
   const [family, setFamily] = useState('');
   const [password, setPassword] = useState('');
+  const { handleNotification } = useUser();
 
   return (
     <section className="auth-box">

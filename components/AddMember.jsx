@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import useUser from '../hooks/userHooks';
 
 export default function AddMember() {
-  const { handleAddMember, handleNotification } = useUser();
   const [memberName, setMemberName] = useState('');
   const [memberColor, setMemberColor] = useState(`#${Math.floor(Math.random() * 16777215).toString(16)}`);
+  const { handleAddMember, handleNotification } = useUser();
 
   return (
     <section className="add-member-box">

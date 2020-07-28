@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import useUser from '../hooks/userHooks';
 
 export default function UpdateFamily(family) {
-  const { handleUpdateFamily, handleNotification } = useUser();
   const [familyName, setFamilyName] = useState('');
+  const { handleUpdateFamily, handleNotification } = useUser();
 
   useEffect(() => {
     if(family?.family.name) setFamilyName(family?.family.name);

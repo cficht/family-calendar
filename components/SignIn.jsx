@@ -3,9 +3,9 @@ import { signIn } from '../pages/api/auth';
 import useUser from '../hooks/userHooks';
 
 export default function SignIn() {
-  const { handleNotification } = useUser();
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
+  const { handleNotification } = useUser();
 
   return (
     <section className="auth-box">

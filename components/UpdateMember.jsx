@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import useUser from '../hooks/userHooks';
 
 export default function UpdateMember({ member }) {
-  const { handleUpdateMember, handleDeleteMember, handleNotification } = useUser();
   const [memberName, setMemberName] = useState(member.name);
   const [memberColor, setMemberColor] = useState(member.color);
-
+  const { handleUpdateMember, handleDeleteMember, handleNotification } = useUser();
+  
   return (
     <li key={member.id} style={{ backgroundColor: member.color }} className="member-node">
       <h3>{member.name}</h3>

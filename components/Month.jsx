@@ -61,7 +61,7 @@ export default function Month() {
       if(moment(event.start).format('MMMM Do YYYY') === moment(day).format('MMMM Do YYYY')) match = true;
       return match;
     });
-    return moment(day).month() === moment(monthTarget).month() ? <CalendarNodes className="calendar-node" key={day} node={day} type='Day' display='D' events={eventMatch}/> : <CalendarNodes className="other-day-node" key={day} node={day} type='Day' display='D' events={eventMatch}/>;
+    return moment(day).month() === moment(monthTarget).month() ? <CalendarNodes className="calendar-node" key={day} node={day} type='Day' display='D' events={eventMatch}/> : <CalendarNodes className="calendar-node other-day-node" key={day} node={day} type='Day' display='D' events={eventMatch}/>;
   });
 
   return (
