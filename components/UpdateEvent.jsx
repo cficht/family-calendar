@@ -4,6 +4,7 @@ import moment from 'moment';
 import PropTypes from 'prop-types';
 import useUser from '../hooks/userHooks';
 import { customStyles } from '../utils/helpers';
+import styles from '../styles/tools.module.css';
 
 Modal.setAppElement('body');
 
@@ -48,8 +49,8 @@ export default function UpdateEvent({ event }) {
   return (
     <section>
       <button onClick={openModal}>Update Event</button>
-      <Modal isOpen={modalIsOpen} onRequestClose={closeModal} style={customStyles} contentLabel="Add Event Modal">
-        <section className="add-event-box">
+      <Modal isOpen={modalIsOpen} onRequestClose={closeModal} style={customStyles} contentLabel="Update Event Modal">
+        <section className={styles.event_box}>
           <h3>Update Event:</h3>
           <form onSubmit={e => {
             try {

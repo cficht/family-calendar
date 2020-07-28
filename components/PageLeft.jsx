@@ -3,6 +3,7 @@ import SignOut from './SignOut';
 import useUser from '../hooks/userHooks';
 import AddEvent from './AddEvent';
 import AdminButton from './AdminButton';
+import styles from '../styles/tools.module.css';
 
 export default function PageLeft() {
   const { members } = useUser();
@@ -14,7 +15,7 @@ export default function PageLeft() {
       <ul>
         <li><AdminButton /></li>
         <li>
-          <section className="member-display">
+          <section className={styles.member_display}>
             <h3>Members:</h3>
             <ul>
               {memberNodes}

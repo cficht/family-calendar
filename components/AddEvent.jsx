@@ -4,6 +4,7 @@ import moment from 'moment';
 import useUser from '../hooks/userHooks';
 import useCalendar from '../hooks/calendarHooks';
 import { customStyles } from '../utils/helpers';
+import styles from '../styles/tools.module.css';
  
 Modal.setAppElement('body');
 
@@ -46,10 +47,10 @@ export default function AddEvent() {
   const memberNodes = members?.map(member => <option value={member.id} key={member.id}>{member.name}</option>);
 
   return (
-    <section className="left-button">
+    <section className={styles.left_button}>
       <button onClick={openModal}>Add Event</button>
       <Modal isOpen={modalIsOpen} onRequestClose={closeModal} style={customStyles} contentLabel="Add Event Modal">
-        <section className="add-event-box">
+        <section className={styles.event_box}>
           <h3>Add Event:</h3>
           <form onSubmit={e => {
             try {
