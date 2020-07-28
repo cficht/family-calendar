@@ -7,6 +7,7 @@ import AddMember from '../components/AddMember';
 import UpdateMember from '../components/UpdateMember';
 import Header from '../components/Header';
 import UpdateFamily from '../components/UpdateFamily';
+import styles from '../styles/admin.module.css';
 
 export default function admin() {
   const { user, family, members, checkLog } = useUser();
@@ -38,9 +39,9 @@ export default function admin() {
             <div className="calendar-container">
               <UpdateFamily family={family}/>
               <AddMember />
-              <section className="member-container">
+              <section className={styles.member_container}>
                 <h2>Update Members:</h2> 
-                <ul className="member-list">
+                <ul className={styles.member_list}>
                   {memberNodes}
                 </ul>
               </section>

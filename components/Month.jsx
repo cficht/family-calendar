@@ -4,6 +4,7 @@ import useCalendar from '../hooks/calendarHooks';
 import useUser from '../hooks/userHooks';
 import CalendarHead from '../components/CalendarHead';
 import CalendarNodes from '../components/CalendarNodes';
+import styles from '../styles/calendar.module.css';
 
 export default function Month() {
   const [monthTarget, setMonthTarget] = useState('');
@@ -61,22 +62,22 @@ export default function Month() {
       if(moment(event.start).format('MMMM Do YYYY') === moment(day).format('MMMM Do YYYY')) match = true;
       return match;
     });
-    return moment(day).month() === moment(monthTarget).month() ? <CalendarNodes className="calendar-node" key={day} node={day} type='Day' display='D' events={eventMatch}/> : <CalendarNodes className="calendar-node other-day-node" key={day} node={day} type='Day' display='D' events={eventMatch}/>;
+    return moment(day).month() === moment(monthTarget).month() ? <CalendarNodes className={styles.calendar_node} key={day} node={day} type='Day' display='D' events={eventMatch}/> : <CalendarNodes className={styles.other_day_node} key={day} node={day} type='Day' display='D' events={eventMatch}/>;
   });
 
   return (
     <>
       <CalendarHead type='months' title={displayDays.month ? displayDays.month : ''}/>
-      <div className="day-name">
-        <div className="day-of-week"><h3>Sunday</h3></div>
-        <div className="day-of-week"><h3>Monday</h3></div>
-        <div className="day-of-week"><h3>Tuesday</h3></div>
-        <div className="day-of-week"><h3>Wednesday</h3></div>
-        <div className="day-of-week"><h3>Thursday</h3></div>
-        <div className="day-of-week"><h3>Friday</h3></div>
-        <div className="day-of-week"><h3>Saturday</h3></div>
+      <div className={styles.day_name}>
+        <div className={styles.day_of_week}><h3>Sunday</h3></div>
+        <div className={styles.day_of_week}><h3>Monday</h3></div>
+        <div className={styles.day_of_week}><h3>Tuesday</h3></div>
+        <div className={styles.day_of_week}><h3>Wednesday</h3></div>
+        <div className={styles.day_of_week}><h3>Thursday</h3></div>
+        <div className={styles.day_of_week}><h3>Friday</h3></div>
+        <div className={styles.day_of_week}><h3>Saturday</h3></div>
       </div>
-      <div className="calendar-body">
+      <div className={styles.calendar_body}>
         {dayNodes}
       </div>
     </>

@@ -7,6 +7,8 @@ import { ToastContainer, Slide } from 'react-toastify';
 import useUser from '../hooks/userHooks';
 import SignUp from '../components/SignUp';
 import SignIn from '../components/SignIn';
+import styles from '../styles/auth.module.css';
+
 API.configure(config);
 
 export default function Home() {
@@ -27,7 +29,7 @@ export default function Home() {
       <Head>
         <title>Family Calendar</title>
       </Head>
-      <main className="main-body">
+      <main className={styles.auth_body}>
         {user ? null : <button type="button" onClick={() => setLogType(logType - 1)} disabled={logType === 0}>&larr;</button>}
         {user ? redirectLogged() : renderLogType()}
         {user ? null : <button type="button" onClick={() => setLogType(logType + 1)} disabled={logType === 1}>&rarr;</button>}

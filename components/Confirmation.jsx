@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { confirmSignUp } from '../pages/api/auth';
 import useUser from '../hooks/userHooks';
+import styles from '../styles/auth.module.css';
 
 export default function Confirmation() {
   const [userName, setUserName] = useState('');
@@ -8,7 +9,7 @@ export default function Confirmation() {
   const { handleNotification } = useUser();
 
   return (
-    <section className="auth-box">
+    <section className={styles.auth_box}>
       <h3>Confirm Your Account</h3>
       <form onSubmit={(e) => {
         confirmSignUp(e, userName, confirmation)

@@ -1,0 +1,81 @@
+.left_button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  margin: 20px;
+  padding: 10px;
+  border: 2px solid black;
+  border-radius: 20px;
+  text-align: center;
+  background-color: whitesmoke;
+}
+
+.member_display {
+  width: 90%;
+  padding: 10px;
+  margin: 20px;
+  border: 2px solid black;
+  border-radius: 20px;
+  text-align: center;
+  background-color: whitesmoke;
+}
+
+.member_display h5 {
+  margin-block-start: .5em;
+  margin-block-end: .5em;
+  padding: 5px;
+  background-color: whitesmoke;
+  border: 2px solid black;
+}
+
+.event_box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  margin: 20px;
+  padding: 10px;
+  border: 2px solid black;
+  border-radius: 20px;
+  text-align: center;
+  background-color: whitesmoke;
+}
+
+.event_box label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.event_box input[type=text] {
+  margin: 5px;
+  width: 70%;
+}
+
+.event_box textarea {
+  margin: 5px;
+  width: 70%;
+}
+
+.event_box select {
+  margin: 5px;
+  width: 70%;
+}
+
+.event_box input[type=date] {
+  margin: 5px;
+  width: 50%;
+}
+
+.event_box input[type=time] {
+  margin: 5px;
+  width: 35%;
+}
+
+.event_box button {
+  margin: 10px;
+  width: 50%;
+}

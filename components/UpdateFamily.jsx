@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import useUser from '../hooks/userHooks';
+import styles from '../styles/admin.module.css';
 
 export default function UpdateFamily(family) {
   const [familyName, setFamilyName] = useState('');
@@ -11,7 +12,7 @@ export default function UpdateFamily(family) {
   }, [family]);
 
   return (
-    <section className="add-member-box">
+    <section className={styles.member_box}>
       <h2>Change Family Name:</h2> 
       <form onSubmit={(e) => {
         try {
