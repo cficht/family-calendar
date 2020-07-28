@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import useUser from '../hooks/userHooks';
+import styles from '../styles/admin.module.css';
 
 export default function UpdateMember({ member }) {
   const [memberName, setMemberName] = useState(member.name);
@@ -8,7 +9,7 @@ export default function UpdateMember({ member }) {
   const { handleUpdateMember, handleDeleteMember, handleNotification } = useUser();
   
   return (
-    <li key={member.id} style={{ backgroundColor: member.color }} className="member-node">
+    <li key={member.id} style={{ backgroundColor: member.color }} className={styles.member_node}>
       <h3>{member.name}</h3>
       <form onSubmit={(e) => {
         try {
@@ -16,7 +17,7 @@ export default function UpdateMember({ member }) {
         } catch(error) {
           handleNotification(error);
         }
-      }} className="member-node-update">
+      }} className={styles.member_node_update}>
         <label>Name:<input type="text" value={memberName} onChange={(e) => setMemberName(e.target.value)}/></label>
         <label>Color:<input type="color" value={memberColor} onChange={(e) => setMemberColor(e.target.value)}/></label>
         <button>Update</button>

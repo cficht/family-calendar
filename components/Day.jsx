@@ -4,6 +4,7 @@ import useCalendar from '../hooks/calendarHooks';
 import useUser from '../hooks/userHooks';
 import CalendarHead from '../components/CalendarHead';
 import UpdateEvent from '../components/UpdateEvent';
+import styles from '../styles/calendar.module.css';
 
 export default function Day() {
   const [dayTarget, setDayTarget] = useState('');
@@ -35,8 +36,8 @@ export default function Day() {
   .map(event => {
     const eventMember = members.find(member => member.id === event.memberID);
     return (
-      <li key={event.id} style={{ backgroundColor: eventMember.color }} className="event-list-item">
-        <section className="event-list-detail">
+      <li key={event.id} style={{ backgroundColor: eventMember.color }} className={styles.event_list_item}>
+        <section className={styles.event_list_detail}>
           <h4>{event.name}</h4>
           <p>{event.description}</p>
           <p>{event.start}</p>
@@ -51,8 +52,8 @@ export default function Day() {
   return (
     <>
       <CalendarHead type="days" title={dayTarget} />
-      <div className="day-body">
-        <ul className="event-list">
+      <div className={styles.day_body}>
+        <ul className={styles.event_list}>
           {eventNodes}
         </ul>
       </div>

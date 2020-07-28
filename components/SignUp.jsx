@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { signUp } from '../pages/api/auth';
 import useUser from '../hooks/userHooks';
+import styles from '../styles/auth.module.css';
 
 export default function SignUp() {
   const [userName, setUserName] = useState('');
@@ -10,7 +11,7 @@ export default function SignUp() {
   const { handleNotification } = useUser();
 
   return (
-    <section className="auth-box">
+    <section className={styles.auth_box}>
       <h3>Create an Account</h3>
       <form onSubmit={(e) => {signUp(e, userName, email, family, password)
         .catch(e => handleNotification(e));

@@ -1,0 +1,83 @@
+.member_container {
+  width: 90%;
+  padding: 10px;
+  margin: 20px;
+  border: 2px solid black;
+  border-radius: 20px;
+  text-align: center;
+  background-color: whitesmoke;
+}
+
+.member_list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.member_box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  margin: 20px;
+  padding: 10px;
+  border: 2px solid black;
+  border-radius: 20px;
+  text-align: center;
+  background-color: whitesmoke;
+}
+
+.member_box label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.member_box input {
+  margin: 5px;
+  width: 50%;
+}
+
+.member_box button {
+  margin: 10px;
+  width: 50%;
+}
+
+.member_node {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  list-style-type: none;
+  margin: 10px;
+  text-align: center;
+  border: 2px solid black;
+}
+
+.member_node h3 {
+  width: 50%;
+  color: black;
+  background-color: whitesmoke;
+  border: 2px solid black;
+}
+
+.member_node input {
+  margin: 5px;
+}
+
+.member_node button {
+  margin: 5px;
+}
+
+.member_node_update {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  align-content: space-between;
+  padding: 10px;
+  margin: 10px;
+  background-color: whitesmoke;
+  border: 2px solid black;
+}

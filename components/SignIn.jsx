@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { signIn } from '../pages/api/auth';
 import useUser from '../hooks/userHooks';
+import styles from '../styles/auth.module.css';
 
 export default function SignIn() {
   const [userName, setUserName] = useState('');
@@ -8,7 +9,7 @@ export default function SignIn() {
   const { handleNotification } = useUser();
 
   return (
-    <section className="auth-box">
+    <section className={styles.auth_box}>
       <h3>Sign in to Family Calendar</h3>
       <form onSubmit={(e) => {
         signIn(e, userName, password)

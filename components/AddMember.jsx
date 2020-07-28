@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import useUser from '../hooks/userHooks';
+import styles from '../styles/admin.module.css';
 
 export default function AddMember() {
   const [memberName, setMemberName] = useState('');
@@ -7,7 +8,7 @@ export default function AddMember() {
   const { handleAddMember, handleNotification } = useUser();
 
   return (
-    <section className="add-member-box">
+    <section className={styles.member_box}>
       <h2>Add Family Member:</h2> 
       <form onSubmit={(e) => {
         try {
