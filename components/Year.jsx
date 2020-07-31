@@ -30,9 +30,11 @@ export default function Year() {
   return (
     <>
       <CalendarHead type='years' title={displayMonths.year ? displayMonths.year.toString() : ''}/>
-      <div className={styles.calendar_body}>
-        {monthNodes}
-      </div>   
+      <div className={styles.calendar_outside}>
+        <div className={styles.year_body}>
+          {monthNodes}
+        </div>   
+      </div>
     </>
   );
 }

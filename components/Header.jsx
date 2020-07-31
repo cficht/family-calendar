@@ -10,9 +10,9 @@ export default function Header({ family, page }) {
     if(page === 'Admin') return <Link href="/"><a>Return to Calendar</a></Link>;
     else return (
       <>
-        <a onClick={() => handleViewChange('Year')}>Year</a>
-        <a onClick={() => handleViewChange('Month')}>Month</a>
-        <a onClick={() => handleViewChange('Day')}>Day</a>
+        <button onClick={() => handleViewChange('Year')} disabled={page === 'Year'}>Year</button>
+        <button onClick={() => handleViewChange('Month')} disabled={page === 'Month'}>Month</button>
+        <button onClick={() => handleViewChange('Day')} disabled={page === 'Day'}>Day</button>
       </>
     );
   };

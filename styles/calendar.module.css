@@ -1,32 +1,46 @@
+.calendar_outside {
+  width: 100%;
+  border-left: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
 .calendar_head {
   display: flex;
   justify-content: space-around;
   align-items: center;
   width: 100%;
   text-align: center;
-  border: 2px solid black;
 }
 
 .calendar_head button {
   width: 10%;
 }
 
-.day_name {
+.calendar_body {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   width: 100%;
+}
+
+.year_body {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 100%;
+  min-height: 500px;
+}
+
+.day_body {
+  width: 100%;
+  min-height: 500px;
+  border: 2px solid black;
 }
 
 .day_of_week {
   text-align: center;
-  border: 2px solid black;
-}
-
-.calendar_body {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  grid-auto-rows: 200px;
-  width: 100%;
+  background-color: gray;
+  box-shadow:
+     inset -1px 0   0 black,
+     inset  0   1px 0 black;
 }
 
 .calendar_body div:first-child {
@@ -34,33 +48,74 @@
 }
 
 .calendar_node {
+  height: 150px;
+  background-color: whitesmoke;
+  box-shadow:
+     inset -1px 0   0 black,
+     inset  0   1px 0 black;
+  overflow: auto;
+}
+
+.calendar_node::-webkit-scrollbar {
   height: 100%;
-  border: 2px solid black;
+  width: 10px;
+}
+
+.calendar_node::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+.calendar_node::-webkit-scrollbar-thumb:hover {
+  background: #555; 
 }
 
 .calendar_node h3 {
   top: 0;
+  margin-block-start: .4em;
+  margin-block-end: .2em;
+  margin-inline-start: 2px;
+  width: 17%;
+  text-align: center;
+  border-radius: 20px;
+}
+
+.calendar_node h3:hover {
+  background-color: lightgray;
+  cursor: pointer;
 }
 
 .other_day_node {
-  height: 100%;
-  border: 2px solid black;
+  height: 150px;
   background-color: lightgray;
+  box-shadow:
+     inset -1px 0   0 black,
+     inset  0   1px 0 black;
+  overflow: auto;
 }
 
 .other_day_node h3 {
   top: 0;
+  margin-block-start: .4em;
+  margin-block-end: .2em;
+  margin-inline-start: 2px;
+  width: 17%;
+  text-align: center;
+  border-radius: 20px;
 }
 
-.day_body {
-  width: 100%;
-  text-align: center;
-  border: 2px solid black;
+.other_day_node h3:hover {
+  background-color: gray;
+  cursor: pointer;
 }
 
 .event_list {
   list-style-type: none;
+  margin-block-start: .4em;
+  margin-left: auto;
+  margin-right: auto;
   padding-inline-start: 0px;
+  width: 85%;
+  overflow: auto;
 }
 
 .event_list h5 {
@@ -72,24 +127,51 @@
 .event_list_item {
   display: flex;
   justify-content: center;
+  margin: 10px;
+  border: 1px solid black;
 }
 
 .event_list_detail {
   width: 50%;
   margin: 10px;
   background-color: whitesmoke;
+  border: 1px solid black;
+}
+
+.event_list_detail h3 {
+  margin-block-start: 0em;
+  margin-block-end: 1em;
+  padding: 10px;
+  text-align: center;
+  background-color: lightgray;
+}
+
+.event_list_detail h4 {
+  margin-block-start: .2em;
+  margin-block-end: .2em;
+  padding: 5px 10px 5px 10px;
+  background-color: lightgray;
+}
+
+.event_list_detail p {
+  margin-block-start: .5em;
+  margin-block-end: .5em;
+  margin-inline-start: 10px;
 }
 
 .event_list_detail button {
   margin: 10px;
 }
 
-.month_event_list {
-  list-style-type: none;
-  padding-inline-start: 0px;
+.event_change {
+  display: flex;
+  justify-content: center;
+  background-color: lightgray;
 }
 
 .month_event_list_item {
-  padding: 10px;
+  padding: 7.5px;
+  margin-top: 2px;
   background-color: blue;
+  border-radius: 10px;
 }

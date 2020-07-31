@@ -37,7 +37,7 @@ export default function calendar() {
           </Head>
           <main className="page-container"> 
             <div className="page-header">
-              <Header family={family} />
+              <Header family={family} page={view}/>
             </div>
             <div className="page-body">
               <div className="page-left">

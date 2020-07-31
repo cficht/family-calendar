@@ -35,15 +35,21 @@ export default function Day() {
   })
   .map(event => {
     const eventMember = members.find(member => member.id === event.memberID);
+    const actualEvent = events.find(realEvent => realEvent.id === event.id);
     return (
       <li key={event.id} style={{ backgroundColor: eventMember.color }} className={styles.event_list_item}>
         <section className={styles.event_list_detail}>
-          <h4>{event.name}</h4>
+          <h3>{event.name}</h3>
+          <h4>Description:</h4>
           <p>{event.description}</p>
-          <p>{event.start}</p>
-          <p>{event.end}</p>
-          <UpdateEvent event={event}/>
-          <button onClick={(e) => handleDeleteEvent(e, event.id)}>Delete Event</button>
+          <h4>Start:</h4>
+          <p>{actualEvent.start}</p>
+          <h4>End:</h4>
+          <p>{actualEvent.end}</p>
+          <div className={styles.event_change}>
+            <UpdateEvent event={event}/>
+            <button onClick={(e) => handleDeleteEvent(e, event.id)}>Delete Event</button>
+          </div>
         </section>
       </li>
     );

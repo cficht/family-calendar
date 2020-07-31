@@ -17,10 +17,17 @@
 
 .header {
   width: 100%;
-  padding: 10px;
   text-align: center;
   font-size: 1.5em;
-  border: 2px solid black;
+}
+
+.header h1{
+  margin-block-start: .4em;
+  margin-block-end: .4em;
+}
+
+.header button {
+  margin: 10px;
 }
 
 .header a {
@@ -31,12 +38,14 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
+  padding: 10px;
 }
 
 .page-left {
   width: 15%;
-  margin: 10px;
+  margin-right: 10px;
   border: 2px solid black;
+  border-radius: 20px;
 }
 
 .page-left ul {
@@ -59,6 +68,9 @@
   justify-content: center;
   align-items: center;
   width: 85%;
+  margin-left: 10px;
+  border: 2px solid black;
+  border-radius: 20px;
 }
 
 .footer {
@@ -72,6 +84,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 85%;
-  margin: 10px;
+  width: 100%;
+  padding: 10px;
 }

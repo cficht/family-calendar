@@ -20,9 +20,11 @@ export default function CalendarNodes({ className, node, type, display, events }
   return (
     <div className={className}>
       <a onClick={() => handleTargetChange(moment(node).format(), type)}><h3>{moment(node).format(display)}</h3></a>
-      <ul className={styles.event_list}>
-        {eventNodes}
-      </ul>
+      <div className={styles.events_container}>
+        <ul className={styles.event_list}>
+          {eventNodes}
+        </ul>
+      </div>
     </div>
   );
 }
