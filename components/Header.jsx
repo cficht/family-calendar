@@ -7,7 +7,7 @@ export default function Header({ family, page }) {
   const { handleViewChange } = useCalendar();
 
   const headerDisplay = () => {
-    if(page === 'Admin') return <Link href="/"><a>Return to Calendar</a></Link>;
+    if(page === 'Admin') return <Link href="/"><button>Return to Calendar</button></Link>;
     else return (
       <>
         <button onClick={() => handleViewChange('Year')} disabled={page === 'Year'}>Year</button>

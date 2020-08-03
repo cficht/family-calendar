@@ -36,19 +36,21 @@ export default function admin() {
             <div className="page-header">
               <Header family={family} page={'Admin'}/>
             </div>
-            <div className="calendar-container">
-              <UpdateFamily family={family}/>
-              <AddMember />
-              <section className={styles.member_container}>
-                <h2>Update Members:</h2> 
-                <ul className={styles.member_list}>
-                  {memberNodes}
-                </ul>
-              </section>
-            </div>
-            <footer className="footer">
-              <SignOut />
-            </footer>
+            <div className="admin-body">
+              <div className="page-right">
+                <div className="calendar-container">
+                  <UpdateFamily family={family}/>
+                  <AddMember />
+                  <section className={styles.member_container}>
+                    <h2>Update Members:</h2> 
+                    <ul className={styles.member_list}>
+                      {memberNodes}
+                    </ul>
+                  </section>
+                </div>    
+                <SignOut />
+              </div>  
+            </div>  
           </main>
           <ToastContainer 
             position="bottom-center"

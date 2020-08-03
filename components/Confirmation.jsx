@@ -10,7 +10,7 @@ export default function Confirmation() {
 
   return (
     <section className={styles.auth_box}>
-      <h3>Confirm Your Account</h3>
+      <h2>Confirm Your Account</h2>
       <form onSubmit={(e) => {
         confirmSignUp(e, userName, confirmation)
           .catch(e => handleNotification(e));

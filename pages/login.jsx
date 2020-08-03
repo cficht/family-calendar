@@ -25,14 +25,17 @@ export default function Home() {
   };
 
   return (
-    <div>
+    <div className="splash-container">
       <Head>
         <title>Family Calendar</title>
       </Head>
-      <main className={styles.auth_body}>
-        {user ? null : <button type="button" onClick={() => setLogType(logType - 1)} disabled={logType === 0}>&larr;</button>}
-        {user ? redirectLogged() : renderLogType()}
-        {user ? null : <button type="button" onClick={() => setLogType(logType + 1)} disabled={logType === 1}>&rarr;</button>}
+      <main className="page-container">
+        <h1>Welcome to Family Calendar</h1>
+        <div className={styles.auth_body}>
+          {user ? null : <button type="button" onClick={() => setLogType(logType - 1)} disabled={logType === 0}>&larr;</button>}
+          {user ? redirectLogged() : renderLogType()}
+          {user ? null : <button type="button" onClick={() => setLogType(logType + 1)} disabled={logType === 1}>&rarr;</button>}
+        </div>
       </main>
       <ToastContainer 
         position="bottom-center"

@@ -6,12 +6,14 @@ import styles from '../styles/auth.module.css';
 
 export default function confirmation() {
   return (
-    <div>
+    <div className="splash-container">
       <Head>
         <title>Family Calendar: Confirmation</title>
       </Head>
-      <main className={styles.auth_body}>
-        <Confirmation />
+      <main className="page-container">
+        <div className={styles.auth_body}>
+          <Confirmation />
+        </div>
       </main>
       <ToastContainer 
         position="bottom-center"
