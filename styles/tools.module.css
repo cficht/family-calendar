@@ -9,23 +9,34 @@
   border: 2px solid black;
   border-radius: 20px;
   text-align: center;
-  background-color: whitesmoke;
+  background-color: #77d7db;
+}
+
+.target_date_input {
+  margin: 20px;
 }
 
 .member_display {
   width: 90%;
-  padding: 10px;
+  padding: 30px;
   margin: 20px;
   border: 2px solid black;
   border-radius: 20px;
   text-align: center;
-  background-color: whitesmoke;
+  font-family: 'Playfair Display', serif;
+  color: black;
+  background-color: #77d7db;
+}
+
+.member_display h3 {
+  margin-block-start: 0em;
 }
 
 .member_display h5 {
   margin-block-start: .5em;
   margin-block-end: .5em;
   padding: 5px;
+  color: black;
   background-color: whitesmoke;
   border: 2px solid black;
 }
@@ -41,6 +52,7 @@
   border: 2px solid black;
   border-radius: 20px;
   text-align: center;
+  font-family: 'Playfair Display', serif;
   background-color: whitesmoke;
 }
 
@@ -48,30 +60,31 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin: 10px;
 }
 
 .event_box input[type=text] {
-  margin: 5px;
+  margin-left: 10px;
   width: 70%;
 }
 
 .event_box textarea {
-  margin: 5px;
+  margin-left: 10px;
   width: 70%;
 }
 
 .event_box select {
-  margin: 5px;
+  margin-left: 10px;
   width: 70%;
 }
 
 .event_box input[type=date] {
-  margin: 5px;
+  margin-left: 10px;
   width: 50%;
 }
 
 .event_box input[type=time] {
-  margin: 5px;
+  margin-left: 10px;
   width: 35%;
 }
 

@@ -48,7 +48,7 @@ export default function Month() {
       const start = moment(event.start);
       const end = moment(event.end);
       inbetween = end.diff(start, 'days');
-      const inbetweenDays = [...Array(Number(inbetween + 1))].map((_, i) => {
+      const inbetweenDays = [...Array(Number(inbetween + 2))].map((_, i) => {
         return { ...event, start: moment(event.start).add(i, 'days').format() };
       });
       return inbetweenDays;
@@ -68,17 +68,17 @@ export default function Month() {
   return (
     <>
       <CalendarHead type='months' title={displayDays.month ? displayDays.month : ''}/>
-      <div className={styles.day_name}>
-        <div className={styles.day_of_week}><h3>Sunday</h3></div>
-        <div className={styles.day_of_week}><h3>Monday</h3></div>
-        <div className={styles.day_of_week}><h3>Tuesday</h3></div>
-        <div className={styles.day_of_week}><h3>Wednesday</h3></div>
-        <div className={styles.day_of_week}><h3>Thursday</h3></div>
-        <div className={styles.day_of_week}><h3>Friday</h3></div>
-        <div className={styles.day_of_week}><h3>Saturday</h3></div>
-      </div>
-      <div className={styles.calendar_body}>
-        {dayNodes}
+      <div className={styles.calendar_outside}>
+        <div className={styles.calendar_body}>
+          <div className={styles.day_of_week}><h3>Sunday</h3></div>
+          <div className={styles.day_of_week}><h3>Monday</h3></div>
+          <div className={styles.day_of_week}><h3>Tuesday</h3></div>
+          <div className={styles.day_of_week}><h3>Wednesday</h3></div>
+          <div className={styles.day_of_week}><h3>Thursday</h3></div>
+          <div className={styles.day_of_week}><h3>Friday</h3></div>
+          <div className={styles.day_of_week}><h3>Saturday</h3></div>
+          {dayNodes}
+        </div>
       </div>
     </>
   );

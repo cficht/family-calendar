@@ -12,7 +12,7 @@ export default function SignUp() {
 
   return (
     <section className={styles.auth_box}>
-      <h3>Create an Account</h3>
+      <h2>Create an Account</h2>
       <form onSubmit={(e) => {signUp(e, userName, email, family, password)
         .catch(e => handleNotification(e));
       }}>

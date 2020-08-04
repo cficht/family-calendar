@@ -10,7 +10,7 @@ export default function SignIn() {
 
   return (
     <section className={styles.auth_box}>
-      <h3>Sign in to Family Calendar</h3>
+      <h2>Login</h2>
       <form onSubmit={(e) => {
         signIn(e, userName, password)
           .catch(e => handleNotification(e));

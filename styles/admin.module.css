@@ -5,7 +5,8 @@
   border: 2px solid black;
   border-radius: 20px;
   text-align: center;
-  background-color: whitesmoke;
+  font-family: 'Playfair Display', serif;
+  background-color: #77d7db;
 }
 
 .member_list {
@@ -25,7 +26,8 @@
   border: 2px solid black;
   border-radius: 20px;
   text-align: center;
-  background-color: whitesmoke;
+  font-family: 'Playfair Display', serif;
+  background-color: #77d7db;
 }
 
 .member_box label {
@@ -57,9 +59,9 @@
 
 .member_node h3 {
   width: 50%;
+  border: 2px solid black;
   color: black;
   background-color: whitesmoke;
-  border: 2px solid black;
 }
 
 .member_node input {

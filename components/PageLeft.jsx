@@ -4,17 +4,21 @@ import useUser from '../hooks/userHooks';
 import AddEvent from './AddEvent';
 import AdminButton from './AdminButton';
 import styles from '../styles/tools.module.css';
+import LoginButton from './LoginButton';
+import ConfirmationButton from './ConfirmationButton';
 
 export default function PageLeft() {
-  const { members } = useUser();
+  const { user, members } = useUser();
 
   const memberNodes = members?.map(member => <li key={member.id} style={{ backgroundColor: member.color }}><h5>{member.name}</h5></li>);
 
   return (
     <section>
       <ul>
-        <li><AdminButton /></li>
-        <li>
+        { !user ? <li><LoginButton /></li> : null }
+        { !user ? <li><ConfirmationButton /></li> : null }
+        { user ? <li><AdminButton /></li> : null }
+        { user ? <li>
           <section className={styles.member_display}>
             <h3>Members:</h3>
             <ul>
@@ -22,8 +26,9 @@ export default function PageLeft() {
             </ul>
           </section>
         </li>
+          : null}
         {members?.length > 0 ? <li><AddEvent /></li> : null}
-        <li><SignOut /></li>
+        { user ? <li><SignOut /></li> : null }
       </ul>
     </section>
   );

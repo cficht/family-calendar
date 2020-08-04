@@ -1,5 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap');
+
 * {
   box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  margin: 0px;
+  background-color: whitesmoke;
+}
+
+button {
+  padding: 5px 10px 5px 10px;
+  margin: 5px;
+  border: 1px solid #154067;
+  font-family: 'Playfair Display', serif;
+  color: #e6fdfd;
+  background-color:	#2684b2;
+}
+
+.splash-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+}
+
+.splash-container h1{
+  margin-block-start: 0em;
+  font-size: 3em;
+  font-family: 'Playfair Display', serif;
+}
+
+.splash-container h4{
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
 }
 
 .page-container {
@@ -13,14 +48,24 @@
   justify-content: center;
   width: 100%;
   padding: 10px;
+  background-color: #30a1b8;
 }
 
 .header {
   width: 100%;
-  padding: 10px;
   text-align: center;
   font-size: 1.5em;
-  border: 2px solid black;
+}
+
+.header h1{
+  margin-block-start: .4em;
+  margin-block-end: .4em;
+  font-family: 'Playfair Display', serif;
+  color: white;
+}
+
+.header button {
+  margin: 10px;
 }
 
 .header a {
@@ -31,12 +76,24 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+}
+
+.admin-body {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
 }
 
 .page-left {
   width: 15%;
-  margin: 10px;
+  margin-right: 10px;
   border: 2px solid black;
+  border-radius: 20px;
+  background-color: #30a1b8;
 }
 
 .page-left ul {
@@ -59,6 +116,10 @@
   justify-content: center;
   align-items: center;
   width: 85%;
+  margin-left: 10px;
+  border: 2px solid black;
+  border-radius: 20px;
+  background-color: #30a1b8;
 }
 
 .footer {
@@ -72,6 +133,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 85%;
-  margin: 10px;
+  width: 100%;
+  padding: 10px;
 }
