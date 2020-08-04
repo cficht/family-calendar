@@ -1,7 +1,7 @@
 # Family Calendar
 Author: [Chris Ficht](http://github.com/cficht)
 
-Deployment coming soon!
+[tinyurl.com/family-calendar](https://tinyurl.com/family-calendar)
 
 ## Overview
 Calendar application to help families manage their day-to-day lives. Created using React, Next.js, Redux, AWS Amplify, AWS Cognito, AWS DynamoDB, and GraphQL.
