@@ -23,14 +23,14 @@ const useUser = () => {
         .then(({ username, attributes }) => dispatch(setUser({ id: attributes.sub, username, email: attributes.email })))
         .then(({ payload }) => getFamilyById(payload.id))
         .then((res) => dispatch(setFamily(res)))
-        .catch((err) => console.log(err));
+        .catch(() => dispatch(setFamily({})));
     }
   }, []);
 
   const checkLog = () => {
     Auth.currentAuthenticatedUser()
       .then((() => console.log('Logged in')))
-      .catch(() => Router.push('/login'));
+      .catch(() => Router.push('/'));
   };
 
   const handleSignOut = (e) => {

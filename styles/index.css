@@ -32,6 +32,11 @@ button {
   font-family: 'Playfair Display', serif;
 }
 
+.splash-container h4{
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+}
+
 .page-container {
   display: flex;
   flex-direction: column;

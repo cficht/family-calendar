@@ -36,7 +36,7 @@ export async function confirmSignUp(e, userName, confirmation) {
 
   try {
     await Auth.confirmSignUp(userName, confirmation);
-    Router.push('/login');
+    Router.push('/');
   } catch(error) {
     throw new Error(error.message); 
   }
@@ -46,7 +46,7 @@ export async function signIn(e, userName, password) {
   e.preventDefault();
   try {
     await Auth.signIn(userName, password);
-    Router.push('/');
+    Router.push('/calendar');
   } catch(error) {
     if(password.length < 1) throw new Error('Password cannot be empty');
     throw new Error(error.message); 
@@ -56,7 +56,7 @@ export async function signIn(e, userName, password) {
 export async function signOut() {
   try {
     await Auth.signOut();
-    Router.push('/login');
+    Router.push('/');
   } catch(error) {
     throw new Error(error.message); 
   }

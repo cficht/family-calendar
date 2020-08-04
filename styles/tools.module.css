@@ -24,6 +24,10 @@
   background-color: #77d7db;
 }
 
+.member_display h3 {
+  margin-block-start: 0em;
+}
+
 .member_display h5 {
   margin-block-start: .5em;
   margin-block-end: .5em;
