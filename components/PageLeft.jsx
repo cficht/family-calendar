@@ -6,7 +6,6 @@ import AdminButton from './AdminButton';
 import styles from '../styles/tools.module.css';
 import LoginButton from './LoginButton';
 import ConfirmationButton from './ConfirmationButton';
-import TargetDate from './TargetDate';
 
 export default function PageLeft() {
   const { user, members } = useUser();
@@ -16,7 +15,6 @@ export default function PageLeft() {
   return (
     <section>
       <ul>
-        <li><TargetDate /></li>
         { !user ? <li><LoginButton /></li> : null }
         { !user ? <li><ConfirmationButton /></li> : null }
         { user ? <li><AdminButton /></li> : null }

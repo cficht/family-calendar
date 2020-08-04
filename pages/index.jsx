@@ -37,7 +37,7 @@ export default function Home() {
           {user ? isLogged() : renderLogType()}
           {user ? null : <button type="button" onClick={() => setLogType(logType + 1)} disabled={logType === 1}>&rarr;</button>}
         </div>
-        <Link href="/calendar"><a><h4>Enter Without Signing In</h4></a></Link>
+        { !user ? <Link href="/calendar"><a><h4>Enter Without Signing In</h4></a></Link> : null }
       </main>
       <ToastContainer 
         position="bottom-center"

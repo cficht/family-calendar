@@ -12,6 +12,10 @@
   background-color: #77d7db;
 }
 
+.target_date_input {
+  margin: 20px;
+}
+
 .member_display {
   width: 90%;
   padding: 30px;

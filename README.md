@@ -21,7 +21,6 @@ Calendar application to help families manage their day-to-day lives. Created usi
 * Nano ID
 
 ## Future Features
-* Make calendar accessible if not logged in
 * Reset password page
 * Delete account page
 * Drag events between dates
