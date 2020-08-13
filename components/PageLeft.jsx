@@ -21,7 +21,7 @@ export default function PageLeft() {
         { user ? <li>
           <section className={styles.member_display}>
             <h3>Members:</h3>
-            <ul>
+            <ul className={styles.member_ul}>
               {memberNodes}
             </ul>
           </section>

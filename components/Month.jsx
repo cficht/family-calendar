@@ -49,7 +49,7 @@ export default function Month() {
       const start = moment(event.start);
       const end = moment(event.end);
       inbetween = end.diff(start, 'days');
-      const inbetweenDays = [...Array(Number(inbetween + 2))].map((_, i) => {
+      const inbetweenDays = [...Array(Number(inbetween + 1))].map((_, i) => {
         return { ...event, start: moment(event.start).add(i, 'days').format() };
       });
       return inbetweenDays;

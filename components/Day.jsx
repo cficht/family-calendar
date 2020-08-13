@@ -43,9 +43,9 @@ export default function Day() {
           <h4>Description:</h4>
           <p>{event.description}</p>
           <h4>Start:</h4>
-          <p>{actualEvent.start}</p>
+          <p>{moment(actualEvent.start).format('dddd, MMMM Do YYYY, h:mm a')}</p>
           <h4>End:</h4>
-          <p>{actualEvent.end}</p>
+          <p>{moment(actualEvent.end).format('dddd, MMMM Do YYYY, h:mm a')}</p>
           <div className={styles.event_change}>
             <UpdateEvent event={event}/>
             <button onClick={(e) => handleDeleteEvent(e, event.id)}>Delete Event</button>
