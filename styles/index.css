@@ -10,6 +10,12 @@ html, body {
   background-color: whitesmoke;
 }
 
+@media only screen and (max-width: 1000px) {
+  html, body {
+    width: 1000px;
+  }
+}
+
 button {
   padding: 5px 10px 5px 10px;
   margin: 5px;
@@ -17,6 +23,7 @@ button {
   font-family: 'Playfair Display', serif;
   color: #e6fdfd;
   background-color:	#2684b2;
+  overflow: hidden;
 }
 
 .splash-container {

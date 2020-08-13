@@ -13,6 +13,8 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  list-style-type: none;
+  padding-inline-start: 0px;
 }
 
 .member_box {
