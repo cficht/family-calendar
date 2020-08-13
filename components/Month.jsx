@@ -13,17 +13,18 @@ export default function Month() {
   const { events } = useUser();
 
   useEffect(() => {
-    if(targetDate) setMonthTarget(moment(targetDate).format('MM-DD-YYYY'));
+    // if(targetDate) setMonthTarget(moment(targetDate).format('MM-DD-YYYY'));
+    if(targetDate) setMonthTarget(moment(targetDate).format());
   }, [targetDate]);
 
   useEffect(() => {
     if(!monthTarget) return;
     const { years, months } = moment(monthTarget).toObject();
-    const monthDays = [...Array(moment((months + 1).toString()).daysInMonth())].map((_, i) => moment().year(years).month(months).date(i + 1).format());
+    const monthDays = [...Array(moment(months + 1).daysInMonth())].map((_, i) => moment().year(years).month(months).date(i + 1).format());
     const beginning = moment(monthDays[0]).day();
     const end = (6 - moment(monthDays[monthDays.length - 1]).day());
-    const preDays = [...Array(Number(beginning))].map((_, i) => moment(`${months + 1}-01-${years}`).subtract(beginning - i, 'days').format());
-    const postDays = [...Array(Number(end))].map((_, i) => moment(`${months + 1}-${monthDays.length}-${years}`).add(i + 1, 'days').format());
+    const preDays = [...Array(Number(beginning))].map((_, i) => moment(monthDays[0]).subtract(beginning - i, 'days').format());
+    const postDays = [...Array(Number(end))].map((_, i) => moment(monthDays[monthDays.length - 1]).add(i + 1, 'days').format());
     setDisplayDays({
       month: moment().year(years).month(months).format('MMMM YYYY'),
       days: [...preDays, ...monthDays, ...postDays],
