@@ -14,7 +14,7 @@ export const getFamilies = async() => {
 
 export const patchFamily = async(family) => {
   const updatedFamily = await API.graphql(graphqlOperation(updateFamily, { input: family }));
-  return updatedFamily.data.updateFamily;
+  return updatedFamily.data.updateFamily
 };
 
 export const postMember = async(member) => {
