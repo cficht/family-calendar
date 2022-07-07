@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "aws-amplify": "^3.0.20",
-    "moment": "^2.27.0",
+    "moment": "^2.29.4",
     "nanoid": "^3.1.10",
     "next": "9.4.4",
     "react": "16.13.1",
